@@ -1,15 +1,19 @@
-// Utils
+// Utility functions
 function clearResult(selector) {
+    // Clears the result text
     document.getElementById(selector).innerText = "";
 }
 function showError(selector, msg) {
+    // Shows an error message in the result box
     document.getElementById(selector).innerText = "Error: " + msg;
 }
 
-// Troca visual das calculadoras (tabs/buttons)
+// Tab/button logic for showing calculators
 function showCalculator(calculatorId) {
+    // Hide all calculators and show only the selected one
     document.querySelectorAll('.calculator').forEach(calc => calc.classList.remove('show'));
     document.getElementById(calculatorId).classList.add('show');
+    // Highlight the active button
     document.querySelectorAll('.toggle-button').forEach(btn => {
         if (btn.getAttribute('data-id') === calculatorId) {
             btn.classList.add('active');
@@ -19,12 +23,12 @@ function showCalculator(calculatorId) {
     });
 }
 
-// Eventos nos botões de calculadora
+// Attach event listener to calculator tab buttons
 document.querySelectorAll('.toggle-button').forEach(btn => {
     btn.addEventListener('click', e => showCalculator(btn.getAttribute('data-id')));
 });
 
-// --- Normal Calculator ---
+// Normal calculator (math expression)
 document.getElementById('calculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('normalResultText');
@@ -34,7 +38,7 @@ document.getElementById('calculator').addEventListener('submit', e => {
         return;
     }
     try {
-        // Use math.js para segurança!
+        // Use math.js for secure calculation!
         const result = math.evaluate(expression.replace(',', '.'));
         document.getElementById('normalResultText').innerText = `Result: ${result}`;
     } catch (err) {
@@ -42,7 +46,7 @@ document.getElementById('calculator').addEventListener('submit', e => {
     }
 });
 
-// --- Rule of Three ---
+// Rule of Three calculator
 document.getElementById('ruleOfThreeCalculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('ruleOfThreeResultText');
@@ -58,7 +62,7 @@ document.getElementById('ruleOfThreeCalculator').addEventListener('submit', e =>
     document.getElementById('ruleOfThreeResultText').innerText = `Percentage: ${result.toFixed(2).replace('.', ',')}%`;
 });
 
-// --- Leverage Calculator ---
+// Leverage calculator
 document.getElementById('leverageCalculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('leveragedProfitResultText');
@@ -72,7 +76,7 @@ document.getElementById('leverageCalculator').addEventListener('submit', e => {
     document.getElementById('leveragedProfitResultText').innerText = `Leverage Profit: ${leveragedProfit.toFixed(2)}%`;
 });
 
-// --- Profit Percentage Calculator ---
+// Profit percentage calculator
 document.getElementById('profitCalculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('profitResultText');
@@ -85,7 +89,7 @@ document.getElementById('profitCalculator').addEventListener('submit', e => {
     document.getElementById('profitResultText').innerText = `Profit: ${(profit / lotSize * 100).toFixed(2)}%`;
 });
 
-// --- Compound Interest Calculator ---
+// Compound Interest calculator
 document.getElementById('compoundInterestCalculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('compoundInterestResultText');
@@ -108,7 +112,7 @@ document.getElementById('compoundInterestCalculator').addEventListener('submit',
     document.getElementById('compoundInterestResultText').innerText = `Total Value: ${total.toFixed(2)}`;
 });
 
-// --- B3 Profit Calculator ---
+// B3 Profit calculator
 document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('b3ProfitResultText');
@@ -117,6 +121,7 @@ document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
     const type = document.getElementById('type').value;
     const taxDeducted = document.getElementById('taxDeducted').checked;
 
+    // Contract values map
     let contractValues = { miniIndice: 0.2, indice: 1, miniDolar: 10, dolar: 50 };
     let contractValue = contractValues[type];
     if (!contracts || !points) {
@@ -132,15 +137,17 @@ document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
     document.getElementById('b3ProfitResultText').innerText = `Total Profit: ${total.toFixed(2)}`;
 });
 
-// Inicialização + efeito de transição/fade-in
+// Initialization and fade-in effect
 document.addEventListener('DOMContentLoaded', () => {
+    // Executes fade-in on page load for main container
     setTimeout(() => {
         document.querySelector('main').classList.add('loaded');
     }, 60);
 
+    // Show the first calculator by default when page loads
     showCalculator('calculator');
 
-    // Limpa resultado ao mudar inputs/selects
+    // Clear results when any input/select is changed
     document.querySelectorAll('.calculator input, .calculator select').forEach(input => {
         input.addEventListener('input', e => {
             const form = input.closest('form');
@@ -149,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Enter aciona submit nos inputs
+    // Pressing Enter in any input triggers the form submit
     document.querySelectorAll('.calculator input').forEach(input => {
         input.addEventListener('keypress', e => {
             if (e.key === 'Enter') {

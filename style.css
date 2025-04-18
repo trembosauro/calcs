@@ -101,7 +101,18 @@ body {
 }
 .result {
     margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #17fa86;
+    background: rgba(23, 250, 134, 0.08); /* leve destaque verde translúcido */
+    border-radius: 16px;
+    padding: 18px;
+    text-align: center;
+    border: 2px solid #17fa86;
+    box-shadow: 0 2px 8px rgba(23,250,134, 0.14);
+    transition: background 0.2s, border-color 0.2s;
 }
+
 .checkbox-container {
     display: flex;
     align-items: center;

@@ -6,11 +6,10 @@ function showError(selector, msg) {
     document.getElementById(selector).innerText = "Error: " + msg;
 }
 
-// Handle tab switching + botão ativo
+// Troca visual das calculadoras (tabs/buttons)
 function showCalculator(calculatorId) {
     document.querySelectorAll('.calculator').forEach(calc => calc.classList.remove('show'));
     document.getElementById(calculatorId).classList.add('show');
-    // botão ativo
     document.querySelectorAll('.toggle-button').forEach(btn => {
         if (btn.getAttribute('data-id') === calculatorId) {
             btn.classList.add('active');
@@ -19,11 +18,13 @@ function showCalculator(calculatorId) {
         }
     });
 }
+
+// Eventos nos botões de calculadora
 document.querySelectorAll('.toggle-button').forEach(btn => {
     btn.addEventListener('click', e => showCalculator(btn.getAttribute('data-id')));
 });
 
-// --- Normal Calculator (Safe!) ---
+// --- Normal Calculator ---
 document.getElementById('calculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('normalResultText');
@@ -33,7 +34,7 @@ document.getElementById('calculator').addEventListener('submit', e => {
         return;
     }
     try {
-        // Use math.js for safe math evaluation!
+        // Use math.js para segurança!
         const result = math.evaluate(expression.replace(',', '.'));
         document.getElementById('normalResultText').innerText = `Result: ${result}`;
     } catch (err) {
@@ -99,11 +100,7 @@ document.getElementById('compoundInterestCalculator').addEventListener('submit',
         return;
     }
     let total = initialInvestment;
-    if (freq === 'daily') {
-        for (let i = 0; i < period; i++) {
-            total = (total + contribution) * (1 + rate);
-        }
-    } else if (freq === 'monthly') {
+    if (freq === 'daily' || freq === 'monthly') {
         for (let i = 0; i < period; i++) {
             total = (total + contribution) * (1 + rate);
         }
@@ -135,14 +132,15 @@ document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
     document.getElementById('b3ProfitResultText').innerText = `Total Profit: ${total.toFixed(2)}`;
 });
 
-// Inicialização: mostrar primeira calculadora e marcar botão ativo
+// Inicialização + efeito de transição/fade-in
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.querySelector('main').classList.add('loaded');
     }, 60);
 
     showCalculator('calculator');
-    // Limpa resultados ao mudar os campos
+
+    // Limpa resultado ao mudar inputs/selects
     document.querySelectorAll('.calculator input, .calculator select').forEach(input => {
         input.addEventListener('input', e => {
             const form = input.closest('form');
@@ -150,7 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (form.id === 'ruleOfThreeCalculator') form.querySelector('#result').value = '';
         });
     });
-    // Acessibilidade: enter em campos -> submit
+
+    // Enter aciona submit nos inputs
     document.querySelectorAll('.calculator input').forEach(input => {
         input.addEventListener('keypress', e => {
             if (e.key === 'Enter') {

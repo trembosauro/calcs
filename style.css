@@ -38,19 +38,22 @@ body {
     color: var(--white);
     cursor: pointer;
     margin: 5px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
 }
+
+/* Active tab: Only thicker border and subtle shadow, no background or text color change */
+.toggle-button.active,
+.toggle-button:active {
+    background-color: transparent;
+    color: var(--white);
+    border: 3px solid var(--white3);
+    box-shadow: 0 0 4px 1px var(--white3);
+}
+
 .toggle-button:focus, .toggle-button:hover {
     border: 2px solid var(--white3);
     outline: 2px solid var(--white3);
     border-radius: 16px;
-}
-.toggle-button.active,
-.toggle-button:active {
-    background-color: transparent; /* No background change */
-    color: var(--white);           /* Same color as other buttons */
-    border: 3px solid var(--white3); /* Thicker border for highlight */
-    box-shadow: 0 0 4px 1px var(--white3);
 }
 
 /* Calculators container for stacking forms */
@@ -65,8 +68,9 @@ body {
     opacity: 0;
     pointer-events: none;
     transform: translateY(32px);
-    transition: opacity 0.4s cubic-bezier(.23,1.35,.38,1),
-                transform 0.4s cubic-bezier(.23,1.35,.38,1);
+    /* Slower transition as requested */
+    transition: opacity 0.8s cubic-bezier(.23,1.35,.38,1),
+                transform 0.8s cubic-bezier(.23,1.35,.38,1);
     position: absolute;
     width: 100%;
     left: 0;
@@ -141,7 +145,7 @@ body {
     border-radius: 16px;
 }
 
-/* Result box: styled according to site palette */
+/* Result box: styled according to site palette, border removed */
 .result {
     margin-top: 20px;
     font-size: 22px;
@@ -150,7 +154,8 @@ body {
     background: var(--card-bg);
     border-radius: 16px;
     padding: 18px;
-    text-align: left;
+    text-align: center;
+    /* Border removed as requested */
     box-shadow: 0 2px 8px rgba(0,0,0, 0.15);
     transition: background 0.2s;
 }
@@ -180,13 +185,13 @@ h2 {
     margin-top: 0;
 }
 
-/* Page fade/slide-in transition */
+/* Page fade/slide-in transition, now slower */
 main {
     opacity: 0;
     transform: translateY(32px);
     transition:
-        opacity 0.7s cubic-bezier(.23,1.35,.38,1),
-        transform 0.7s cubic-bezier(.23,1.35,.38,1);
+        opacity 1.2s cubic-bezier(.23,1.35,.38,1),
+        transform 1.2s cubic-bezier(.23,1.35,.38,1);
 }
 
 main.loaded {

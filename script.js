@@ -137,6 +137,10 @@ document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
 
 // Inicialização: mostrar primeira calculadora e marcar botão ativo
 document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        document.querySelector('main').classList.add('loaded');
+    }, 60);
+
     showCalculator('calculator');
     // Limpa resultados ao mudar os campos
     document.querySelectorAll('.calculator input, .calculator select').forEach(input => {

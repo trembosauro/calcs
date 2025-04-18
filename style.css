@@ -151,9 +151,9 @@ body {
     border-radius: 16px;
     padding: 18px;
     text-align: center;
-    border: 2px solid var(--white2);
+    /* border removed */
     box-shadow: 0 2px 8px rgba(0,0,0, 0.15);
-    transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s;
 }
 
 /* Checkbox style (e.g., for deduct tax) */

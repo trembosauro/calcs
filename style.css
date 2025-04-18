@@ -33,11 +33,17 @@ body {
     color: var(--white);
     cursor: pointer;
     margin: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 .toggle-button:focus, .toggle-button:hover {
     border: 2px solid var(--white3);
     outline: 2px solid var(--white3);
+}
+.toggle-button.active,
+.toggle-button:active {
+    background-color: var(--white2);
+    color: #232323;
+    border: 2px solid var(--white3);
 }
 .calculators {
     width: 100%;

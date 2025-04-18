@@ -1,0 +1,130 @@
+:root {
+    --primary-bg: #1F1F1F;
+    --card-bg:   #2B2B2B;
+    --input-bg:  #3D3D3D;
+    --white:     rgba(255,255,255,0.9);
+    --white2:    rgba(255,255,255,0.42);
+    --white3:    rgba(255,255,255,0.56);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0 16px;
+    font-size: 16px;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    margin-top: 24px;
+}
+.toggle-button {
+    padding: 15px 30px;
+    border: 2px solid var(--white2);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--white);
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+.toggle-button:focus, .toggle-button:hover {
+    border: 2px solid var(--white3);
+    outline: 2px solid var(--white3);
+}
+.calculators {
+    width: 100%;
+}
+.calculator {
+    display: none;
+    width: 90%;
+    max-width: 600px;
+    margin: 8px auto;
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.35);
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.calculator.show {
+    display: block;
+}
+.calculator input, .calculator button, .calculator .result, .calculator select, .calculator label {
+    font-size: 16px;
+    color: var(--white);
+}
+.calculator input, .calculator select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid var(--input-bg);
+    background-color: var(--input-bg);
+    box-sizing: border-box;
+    color: var(--white);
+}
+.calculator input:focus, .calculator select:focus {
+    border: 2px solid var(--white2);
+    outline: none;
+}
+.calculator button {
+    padding: 15px 30px;
+    border: 2px solid var(--white2);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--white);
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+.calculator button:hover, .calculator button:focus {
+    border: 2px solid var(--white3);
+}
+.result {
+    margin-top: 20px;
+}
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+}
+h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--white);
+    margin-bottom: 14px;
+    margin-top: 0;
+}
+@media (min-width: 769px) {
+    .calculator {
+        width: 500px;
+    }
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+input:disabled {
+    background-color: #444 !important;
+    color: #999 !important;
+}

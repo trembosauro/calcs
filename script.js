@@ -6,10 +6,18 @@ function showError(selector, msg) {
     document.getElementById(selector).innerText = "Error: " + msg;
 }
 
-// Handle tab switching
+// Handle tab switching + botão ativo
 function showCalculator(calculatorId) {
     document.querySelectorAll('.calculator').forEach(calc => calc.classList.remove('show'));
     document.getElementById(calculatorId).classList.add('show');
+    // botão ativo
+    document.querySelectorAll('.toggle-button').forEach(btn => {
+        if (btn.getAttribute('data-id') === calculatorId) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
 document.querySelectorAll('.toggle-button').forEach(btn => {
     btn.addEventListener('click', e => showCalculator(btn.getAttribute('data-id')));
@@ -127,7 +135,7 @@ document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
     document.getElementById('b3ProfitResultText').innerText = `Total Profit: ${total.toFixed(2)}`;
 });
 
-// Inicialização: mostrar primeira calculadora
+// Inicialização: mostrar primeira calculadora e marcar botão ativo
 document.addEventListener('DOMContentLoaded', () => {
     showCalculator('calculator');
     // Limpa resultados ao mudar os campos

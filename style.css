@@ -16,7 +16,7 @@ body {
     align-items: center;
     margin: 0;
     padding: 0 16px;
-    font-size: 16px;
+    font-size: 18px;
 }
 .button-container {
     display: flex;
@@ -59,14 +59,14 @@ body {
     padding: 20px;
     border-radius: 16px;
     box-shadow: 0 0 10px rgba(0,0,0,0.35);
-    font-size: 16px;
+    font-size: 18px;
     box-sizing: border-box;
 }
 .calculator.show {
     display: block;
 }
 .calculator input, .calculator button, .calculator .result, .calculator select, .calculator label {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--white);
 }
 .calculator input, .calculator select {

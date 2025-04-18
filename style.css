@@ -103,13 +103,13 @@ body {
     margin-top: 20px;
     font-size: 22px;
     font-weight: bold;
-    color: #17fa86;
-    background: rgba(23, 250, 134, 0.08); /* leve destaque verde translúcido */
+    color: var(--white);
+    background: var(--card-bg);
     border-radius: 16px;
     padding: 18px;
     text-align: center;
-    border: 2px solid #17fa86;
-    box-shadow: 0 2px 8px rgba(23,250,134, 0.14);
+    border: 2px solid var(--white2);
+    box-shadow: 0 2px 8px rgba(0,0,0, 0.15);
     transition: background 0.2s, border-color 0.2s;
 }
 

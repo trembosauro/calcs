@@ -164,13 +164,19 @@ input:disabled {
 }
 
 /* Estado visível: animar para opacidade total e posição normal */
+.calculator {
+    opacity: 0;
+    transform: translateY(32px);
+    pointer-events: none;
+    transition:
+        opacity 0.4s cubic-bezier(.23,1.35,.38,1),
+        transform 0.4s cubic-bezier(.23,1.35,.38,1);
+}
 .calculator.show {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
-
-/* Fade-in do conteúdo principal ao carregar */
 main {
     opacity: 0;
     transform: translateY(32px);
@@ -178,7 +184,6 @@ main {
         opacity 0.7s cubic-bezier(.23,1.35,.38,1),
         transform 0.7s cubic-bezier(.23,1.35,.38,1);
 }
-
 main.loaded {
     opacity: 1;
     transform: translateY(0);

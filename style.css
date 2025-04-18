@@ -28,7 +28,7 @@ body {
 .toggle-button {
     padding: 15px 30px;
     border: 2px solid var(--white2);
-    border-radius: 5px;
+    border-radius: 16px;
     background-color: transparent;
     color: var(--white);
     cursor: pointer;
@@ -38,12 +38,14 @@ body {
 .toggle-button:focus, .toggle-button:hover {
     border: 2px solid var(--white3);
     outline: 2px solid var(--white3);
+    border-radius: 16px;
 }
 .toggle-button.active,
 .toggle-button:active {
     background-color: var(--white2);
     color: #232323;
     border: 2px solid var(--white3);
+    border-radius: 16px;
 }
 .calculators {
     width: 100%;
@@ -55,7 +57,7 @@ body {
     margin: 8px auto;
     background-color: var(--card-bg);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 0 10px rgba(0,0,0,0.35);
     font-size: 16px;
     box-sizing: border-box;
@@ -71,7 +73,7 @@ body {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border-radius: 5px;
+    border-radius: 16px;
     border: 1px solid var(--input-bg);
     background-color: var(--input-bg);
     box-sizing: border-box;
@@ -80,11 +82,12 @@ body {
 .calculator input:focus, .calculator select:focus {
     border: 2px solid var(--white2);
     outline: none;
+    border-radius: 16px;
 }
 .calculator button {
     padding: 15px 30px;
     border: 2px solid var(--white2);
-    border-radius: 5px;
+    border-radius: 16px;
     background-color: transparent;
     color: var(--white);
     cursor: pointer;
@@ -94,6 +97,7 @@ body {
 }
 .calculator button:hover, .calculator button:focus {
     border: 2px solid var(--white3);
+    border-radius: 16px;
 }
 .result {
     margin-top: 20px;
@@ -104,11 +108,13 @@ body {
     gap: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
+    border-radius: 16px;
 }
 .checkbox-container input[type="checkbox"] {
     width: 18px;
     height: 18px;
     margin-left: 8px;
+    border-radius: 16px;
 }
 h2 {
     font-size: 26px;
@@ -133,4 +139,5 @@ input[type="number"] {
 input:disabled {
     background-color: #444 !important;
     color: #999 !important;
+    border-radius: 16px !important;
 }

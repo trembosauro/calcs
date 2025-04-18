@@ -47,10 +47,10 @@ body {
 }
 .toggle-button.active,
 .toggle-button:active {
-    background-color: var(--white2);
-    color: #232323;
-    border: 2px solid var(--white3);
-    border-radius: 16px;
+    background-color: transparent; /* No background change */
+    color: var(--white);           /* Same color as other buttons */
+    border: 3px solid var(--white3); /* Thicker border for highlight */
+    box-shadow: 0 0 4px 1px var(--white3);
 }
 
 /* Calculators container for stacking forms */

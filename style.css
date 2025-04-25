@@ -116,7 +116,7 @@ body {
     padding: 10px;
     margin: 10px 0;
     border-radius: 16px;
-    border: 1px solid var(--input-bg);
+    border: 2px solid var(--input-bg); /* Borda com mesma largura para todos os estados */
     background-color: var(--input-bg);
     box-sizing: border-box;
     color: var(--white);

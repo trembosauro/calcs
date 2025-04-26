@@ -198,7 +198,6 @@ textarea:disabled {
     border-radius: 16px !important;
 }
 
-/* --------- B3 Profit: BOTÕES INLINE E PEQUENOS --------- */
 #b3ProfitCalculator .type-btn-group {
     display: flex;
     flex-direction: row;

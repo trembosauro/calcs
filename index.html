@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculators</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
 </head>
 <body>
     <div class="button-container">
-        <button class="toggle-button active" data-id="calculator">Normal Calculator</button>
+        <button class="toggle-button" data-id="calculator">Normal Calculator</button>
         <button class="toggle-button" data-id="ruleOfThreeCalculator">Rule of Three</button>
         <button class="toggle-button" data-id="leverageCalculator">Leverage</button>
         <button class="toggle-button" data-id="profitCalculator">Profit Percentage</button>
@@ -18,99 +20,95 @@
     </div>
     <main id="content">
         <section class="calculators">
-
-            <!-- 1. Normal Calculator -->
-            <form class="calculator show" id="calculator" autocomplete="off">
-                <h2>Normal Calculator</h2>
-                <div>
-                    <label for="calc1">Value 1:</label>
-                    <input type="number" id="calc1" name="calc1">
-                    <label for="calc2">Value 2:</label>
-                    <input type="number" id="calc2" name="calc2">
-                </div>
+            <!-- Normal Calculator -->
+            <form class="calculator" id="calculator" autocomplete="off">
+                <h2>Calculator</h2>
+                <label for="operationInput">Math Expression:</label>
+                <input type="text" id="operationInput" name="operationInput" placeholder="Type the operation" aria-label="Math operation">
                 <button type="submit">Calculate</button>
-                <div class="result"></div>
+                <div class="result" id="normalResultText"></div>
             </form>
-
-            <!-- 2. Rule of Three -->
+            <!-- Rule of Three -->
             <form class="calculator" id="ruleOfThreeCalculator" autocomplete="off">
-                <h2>Rule of Three</h2>
+                <h2>Rule of Three Calculator</h2>
+                <label for="input1">Value 1</label>
+                <input type="number" id="input1" step="any" name="input1" placeholder="100">
+                <label for="input2">Value 2</label>
+                <input type="number" id="input2" step="any" name="input2" placeholder="X">
                 <div>
-                    <label for="r3a">A:</label>
-                    <input type="number" id="r3a">
-                    <label for="r3b">B:</label>
-                    <input type="number" id="r3b">
-                    <label for="r3c">C:</label>
-                    <input type="number" id="r3c">
+                    <label for="input3">Reference (Fixed: 100)</label>
+                    <input type="number" id="input3" value="100" disabled>
+                </div>
+                <div>
+                    <label for="result">Result</label>
+                    <input type="number" id="result" disabled placeholder="X">
                 </div>
                 <button type="submit">Calculate</button>
-                <div class="result"></div>
+                <div class="result" id="ruleOfThreeResultText"></div>
             </form>
-
-            <!-- 3. Leverage -->
+            <!-- Leverage Calculator -->
             <form class="calculator" id="leverageCalculator" autocomplete="off">
-                <h2>Leverage</h2>
-                <div>
-                    <label for="lev1">Value:</label>
-                    <input type="number" id="lev1">
-                </div>
+                <h2>Leverage Calculator</h2>
+                <label for="leverage">Leverage:</label>
+                <input type="number" id="leverage" step="any" name="leverage">
+                <label for="percentage">Percentage Earned (%):</label>
+                <input type="number" id="percentage" step="any" name="percentage">
                 <button type="submit">Calculate</button>
-                <div class="result"></div>
+                <div class="result" id="leveragedProfitResultText"></div>
             </form>
-
-            <!-- 4. Profit Percentage -->
+            <!-- Profit Calculator -->
             <form class="calculator" id="profitCalculator" autocomplete="off">
-                <h2>Profit Percentage</h2>
-                <div>
-                    <label for="ppBuy">Buy:</label>
-                    <input type="number" id="ppBuy">
-                    <label for="ppSell">Sell:</label>
-                    <input type="number" id="ppSell">
-                </div>
+                <h2>Profit Percentage Calculator</h2>
+                <label for="lotSize">Lot Size ($):</label>
+                <input type="number" id="lotSize" step="any" name="lotSize">
+                <label for="profit">Profit Amount ($):</label>
+                <input type="number" id="profit" step="any" name="profit">
                 <button type="submit">Calculate</button>
-                <div class="result"></div>
+                <div class="result" id="profitResultText"></div>
             </form>
-
-            <!-- 5. Compound Interest -->
+            <!-- Compound Interest -->
             <form class="calculator" id="compoundInterestCalculator" autocomplete="off">
-                <h2>Compound Interest</h2>
-                <div>
-                    <label for="ciPrincipal">Principal:</label>
-                    <input type="number" id="ciPrincipal">
-                    <label for="ciRate">Rate (%):</label>
-                    <input type="number" id="ciRate">
-                    <label for="ciTime">Time (years):</label>
-                    <input type="number" id="ciTime">
-                </div>
+                <h2>Compound Interest Calculator</h2>
+                <label for="initialInvestment">Initial Investment ($):</label>
+                <input type="number" id="initialInvestment" step="any" name="initialInvestment">
+                <label for="contribution">Daily/Monthly Contribution ($):</label>
+                <input type="number" id="contribution" step="any" name="contribution">
+                <label for="rate">Daily/Monthly Interest Rate (%):</label>
+                <input type="number" id="rate" step="any" name="rate">
+                <label for="period">Investment Period (days/months):</label>
+                <input type="number" id="period" step="any" name="period">
+                <label for="compoundFrequency">Compounding Frequency:</label>
+                <select id="compoundFrequency" name="compoundFrequency">
+                    <option value="daily">Daily</option>
+                    <option value="monthly">Monthly</option>
+                </select>
                 <button type="submit">Calculate</button>
-                <div class="result"></div>
+                <div class="result" id="compoundInterestResultText"></div>
             </form>
-
-            <!-- 6. B3 Profit (última) -->
+            <!-- B3 Profit Calculator -->
             <form class="calculator" id="b3ProfitCalculator" autocomplete="off">
-                <h2>B3 Profit</h2>
-                <div class="type-btn-group" id="typeBtnGroup">
-                    <span>Type:</span>
-                    <button type="button" class="type-btn" data-type="miniIndice">Mini Index</button>
-                    <button type="button" class="type-btn" data-type="miniDolar">Mini Dollar</button>
-                    <button type="button" class="type-btn" data-type="indice">Index</button>
-                    <button type="button" class="type-btn" data-type="dolar">Dollar</button>
-                </div>
-                <div>
-                    <label for="contracts">Contracts:</label>
-                    <input type="number" id="contracts" step="1" name="contracts" min="1">
-                    <label for="points">Points:</label>
-                    <input type="number" id="points" step="any" name="points">
-                </div>
-                <div class="switch-container">
-                    <button id="taxDeductedBtn" type="button" class="switch-btn">Tax Deducted</button>
-                </div>
+                <h2>B3 Profit Calculator</h2>
+                <label for="contracts">Contracts:</label>
+                <input type="number" id="contracts" name="contracts">
+                <label for="type">Type:</label>
+                <select id="type" name="type">
+                    <option value="miniIndice">Mini Index</option>
+                    <option value="miniDolar">Mini Dollar</option>
+                    <option value="indice">Index</option>
+                    <option value="dolar">Dollar</option>
+                </select>
+                <label for="points">Points:</label>
+                <input type="number" id="points" step="0.5" name="points">
+                <label class="checkbox-container">
+                    <span>Tax Deducted</span>
+                    <input type="checkbox" id="taxDeducted" name="taxDeducted">
+                </label>
                 <button type="submit">Calculate</button>
                 <div class="result" id="b3ProfitResultText"></div>
             </form>
-
         </section>
     </main>
+    <script src="https://unpkg.com/mathjs@11.8.0/lib/browser/math.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

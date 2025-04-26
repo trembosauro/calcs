@@ -6,6 +6,7 @@
     --white2:    rgba(255,255,255,0.42);
     --white3:    rgba(255,255,255,0.56);
 }
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--primary-bg);
@@ -17,6 +18,7 @@ body {
     padding: 0 16px;
     font-size: 16px;
 }
+
 .button-container {
     display: flex;
     justify-content: center;
@@ -24,6 +26,7 @@ body {
     margin-bottom: 20px;
     margin-top: 24px;
 }
+
 .toggle-button {
     padding: 15px 30px;
     border: 2px solid var(--white2);
@@ -46,13 +49,13 @@ body {
     outline: 2px solid var(--white3);
     border-radius: 16px;
 }
+
 .calculators {
     position: relative;
     min-height: 420px;
     width: 100%;
 }
 .calculator {
-    display: none;
     opacity: 0;
     pointer-events: none;
     position: absolute;
@@ -60,6 +63,7 @@ body {
     left: 0;
     top: 0;
     z-index: 0;
+    display: block;
     max-width: 600px;
     margin: 8px auto;
     background-color: var(--card-bg);
@@ -71,13 +75,20 @@ body {
     transition: opacity 0.4s, z-index 0s 0.4s;
 }
 .calculator.show {
-    display: block;
     opacity: 1;
     pointer-events: auto;
     z-index: 1;
     position: relative;
     transition: opacity 0.4s;
 }
+.calculator:not(.show) {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+    position: absolute !important;
+}
+/* Fim da visibilidade controlada */
+
 .calculator input,
 .calculator button,
 .calculator .result,

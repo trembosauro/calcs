@@ -16,6 +16,7 @@ buttons.forEach(btn => {
     });
 });
 
+// B3 profit type buttons (se existir)
 const btnGroup = document.getElementById('typeBtnGroup');
 if (btnGroup) {
     const typeBtns = btnGroup.querySelectorAll('.type-btn');
@@ -28,6 +29,7 @@ if (btnGroup) {
     typeBtns[0].classList.add('active');
 }
 
+// Tax Deducted button (se existir)
 let taxDeductedActive = false;
 const taxBtn = document.getElementById('taxDeductedBtn');
 if (taxBtn) {

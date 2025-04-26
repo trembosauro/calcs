@@ -9,17 +9,85 @@
 </head>
 <body>
     <div class="button-container">
-        <button class="toggle-button active" data-id="b3ProfitCalculator">B3 Profit</button>
+        <button class="toggle-button active" data-id="calculator">Normal Calculator</button>
         <button class="toggle-button" data-id="ruleOfThreeCalculator">Rule of Three</button>
         <button class="toggle-button" data-id="leverageCalculator">Leverage</button>
         <button class="toggle-button" data-id="profitCalculator">Profit Percentage</button>
         <button class="toggle-button" data-id="compoundInterestCalculator">Compound Interest</button>
-        <button class="toggle-button" data-id="calculator">Normal Calculator</button>
+        <button class="toggle-button" data-id="b3ProfitCalculator">B3 Profit</button>
     </div>
     <main id="content">
         <section class="calculators">
 
-            <form class="calculator show" id="b3ProfitCalculator" autocomplete="off">
+            <!-- 1. Normal Calculator -->
+            <form class="calculator show" id="calculator" autocomplete="off">
+                <h2>Normal Calculator</h2>
+                <div>
+                    <label for="calc1">Value 1:</label>
+                    <input type="number" id="calc1" name="calc1">
+                    <label for="calc2">Value 2:</label>
+                    <input type="number" id="calc2" name="calc2">
+                </div>
+                <button type="submit">Calculate</button>
+                <div class="result"></div>
+            </form>
+
+            <!-- 2. Rule of Three -->
+            <form class="calculator" id="ruleOfThreeCalculator" autocomplete="off">
+                <h2>Rule of Three</h2>
+                <div>
+                    <label for="r3a">A:</label>
+                    <input type="number" id="r3a">
+                    <label for="r3b">B:</label>
+                    <input type="number" id="r3b">
+                    <label for="r3c">C:</label>
+                    <input type="number" id="r3c">
+                </div>
+                <button type="submit">Calculate</button>
+                <div class="result"></div>
+            </form>
+
+            <!-- 3. Leverage -->
+            <form class="calculator" id="leverageCalculator" autocomplete="off">
+                <h2>Leverage</h2>
+                <div>
+                    <label for="lev1">Value:</label>
+                    <input type="number" id="lev1">
+                </div>
+                <button type="submit">Calculate</button>
+                <div class="result"></div>
+            </form>
+
+            <!-- 4. Profit Percentage -->
+            <form class="calculator" id="profitCalculator" autocomplete="off">
+                <h2>Profit Percentage</h2>
+                <div>
+                    <label for="ppBuy">Buy:</label>
+                    <input type="number" id="ppBuy">
+                    <label for="ppSell">Sell:</label>
+                    <input type="number" id="ppSell">
+                </div>
+                <button type="submit">Calculate</button>
+                <div class="result"></div>
+            </form>
+
+            <!-- 5. Compound Interest -->
+            <form class="calculator" id="compoundInterestCalculator" autocomplete="off">
+                <h2>Compound Interest</h2>
+                <div>
+                    <label for="ciPrincipal">Principal:</label>
+                    <input type="number" id="ciPrincipal">
+                    <label for="ciRate">Rate (%):</label>
+                    <input type="number" id="ciRate">
+                    <label for="ciTime">Time (years):</label>
+                    <input type="number" id="ciTime">
+                </div>
+                <button type="submit">Calculate</button>
+                <div class="result"></div>
+            </form>
+
+            <!-- 6. B3 Profit (última) -->
+            <form class="calculator" id="b3ProfitCalculator" autocomplete="off">
                 <h2>B3 Profit</h2>
                 <div class="type-btn-group" id="typeBtnGroup">
                     <span>Type:</span>
@@ -39,68 +107,6 @@
                 </div>
                 <button type="submit">Calculate</button>
                 <div class="result" id="b3ProfitResultText"></div>
-            </form>
-
-            <form class="calculator" id="ruleOfThreeCalculator" autocomplete="off">
-                <h2>Rule of Three</h2>
-                <div>
-                    <label for="r3a">A:</label>
-                    <input type="number" id="r3a">
-                    <label for="r3b">B:</label>
-                    <input type="number" id="r3b">
-                    <label for="r3c">C:</label>
-                    <input type="number" id="r3c">
-                </div>
-                <button type="submit">Calculate</button>
-                <div class="result"></div>
-            </form>
-
-            <form class="calculator" id="leverageCalculator" autocomplete="off">
-                <h2>Leverage</h2>
-                <div>
-                    <label for="lev1">Value:</label>
-                    <input type="number" id="lev1">
-                </div>
-                <button type="submit">Calculate</button>
-                <div class="result"></div>
-            </form>
-
-            <form class="calculator" id="profitCalculator" autocomplete="off">
-                <h2>Profit Percentage</h2>
-                <div>
-                    <label for="ppBuy">Buy:</label>
-                    <input type="number" id="ppBuy">
-                    <label for="ppSell">Sell:</label>
-                    <input type="number" id="ppSell">
-                </div>
-                <button type="submit">Calculate</button>
-                <div class="result"></div>
-            </form>
-
-            <form class="calculator" id="compoundInterestCalculator" autocomplete="off">
-                <h2>Compound Interest</h2>
-                <div>
-                    <label for="ciPrincipal">Principal:</label>
-                    <input type="number" id="ciPrincipal">
-                    <label for="ciRate">Rate (%):</label>
-                    <input type="number" id="ciRate">
-                    <label for="ciTime">Time (years):</label>
-                    <input type="number" id="ciTime">
-                </div>
-                <button type="submit">Calculate</button>
-                <div class="result"></div>
-            </form>
-
-            <form class="calculator" id="calculator" autocomplete="off">
-                <h2>Normal Calculator</h2>
-                <div>
-                    <label for="calc1">Value 1:</label>
-                    <input type="number" id="calc1" name="calc1">
-                    <label for="calc2">Value 2:</label>
-                    <input type="number" id="calc2" name="calc2">
-                </div>
-                <button type="submit">Calculate</button>
-                <div class="result"></div>
             </form>
 
         </section>

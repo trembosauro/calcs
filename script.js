@@ -1,19 +1,15 @@
 // Utility functions
 function clearResult(selector) {
-    // Clears the result text
     document.getElementById(selector).innerText = "";
 }
 function showError(selector, msg) {
-    // Shows an error message in the result box
     document.getElementById(selector).innerText = "Error: " + msg;
 }
 
 // Tab/button logic for showing calculators
 function showCalculator(calculatorId) {
-    // Hide all calculators and show only the selected one
     document.querySelectorAll('.calculator').forEach(calc => calc.classList.remove('show'));
     document.getElementById(calculatorId).classList.add('show');
-    // Highlight the active button
     document.querySelectorAll('.toggle-button').forEach(btn => {
         if (btn.getAttribute('data-id') === calculatorId) {
             btn.classList.add('active');
@@ -22,8 +18,6 @@ function showCalculator(calculatorId) {
         }
     });
 }
-
-// Attach event listener to calculator tab buttons
 document.querySelectorAll('.toggle-button').forEach(btn => {
     btn.addEventListener('click', e => showCalculator(btn.getAttribute('data-id')));
 });
@@ -38,7 +32,6 @@ document.getElementById('calculator').addEventListener('submit', e => {
         return;
     }
     try {
-        // Use math.js for secure calculation!
         const result = math.evaluate(expression.replace(',', '.'));
         document.getElementById('normalResultText').innerText = `Result: ${result}`;
     } catch (err) {
@@ -98,7 +91,6 @@ document.getElementById('compoundInterestCalculator').addEventListener('submit',
     const rate = Number(document.getElementById('rate').value.replace(',', '.')) / 100;
     const period = Number(document.getElementById('period').value.replace(',', '.'));
     const freq = document.getElementById('compoundFrequency').value;
-
     if (!initialInvestment || !rate || !period) {
         showError('compoundInterestResultText', "Main fields required");
         return;
@@ -112,16 +104,34 @@ document.getElementById('compoundInterestCalculator').addEventListener('submit',
     document.getElementById('compoundInterestResultText').innerText = `Total Value: ${total.toFixed(2)}`;
 });
 
+// === Custom toggles for B3 Profit ===
+// Tax Deducted toggle
+let taxDeducted = false;
+document.getElementById('taxDeductedBtn').addEventListener('click', function() {
+    taxDeducted = !taxDeducted;
+    this.classList.toggle('active', taxDeducted);
+});
+
+// Type select toggle buttons
+const typeInput = document.getElementById('type');
+const btnGroup = document.getElementById('typeBtnGroup');
+btnGroup.querySelectorAll('.type-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        btnGroup.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        typeInput.value = this.dataset.type;
+    });
+});
+btnGroup.querySelector('.type-btn[data-type="miniIndice"]').classList.add('active');
+typeInput.value = "miniIndice";
+
 // B3 Profit calculator
 document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('b3ProfitResultText');
     const contracts = Number(document.getElementById('contracts').value);
     const points = Number(document.getElementById('points').value.replace(',', '.'));
-    const type = document.getElementById('type').value;
-    const taxDeducted = document.getElementById('taxDeducted').checked;
-
-    // Contract values map
+    const type = typeInput.value;
     let contractValues = { miniIndice: 0.2, indice: 1, miniDolar: 10, dolar: 50 };
     let contractValue = contractValues[type];
     if (!contracts || !points) {
@@ -139,15 +149,10 @@ document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
 
 // Initialization and fade-in effect
 document.addEventListener('DOMContentLoaded', () => {
-    // Executes fade-in on page load for main container
     setTimeout(() => {
         document.querySelector('main').classList.add('loaded');
     }, 60);
-
-    // Show the first calculator by default when page loads
     showCalculator('calculator');
-
-    // Clear results when any input/select is changed
     document.querySelectorAll('.calculator input, .calculator select').forEach(input => {
         input.addEventListener('input', e => {
             const form = input.closest('form');
@@ -155,8 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (form.id === 'ruleOfThreeCalculator') form.querySelector('#result').value = '';
         });
     });
-
-    // Pressing Enter in any input triggers the form submit
     document.querySelectorAll('.calculator input').forEach(input => {
         input.addEventListener('keypress', e => {
             if (e.key === 'Enter') {

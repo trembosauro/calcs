@@ -56,26 +56,10 @@ body {
     width: 100%;
 }
 .calculator {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(32px);
-    transition: opacity 0.8s cubic-bezier(.23,1.35,.38,1),
-                transform 0.8s cubic-bezier(.23,1.35,.38,1);
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    z-index: 0;
-    display: block;
-}
-.calculator.show {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
-    z-index: 1;
     position: relative;
-}
-.calculator {
+    width: 100%;
     max-width: 600px;
     margin: 8px auto;
     background-color: var(--card-bg);
@@ -167,15 +151,9 @@ h2 {
     margin-top: 0;
 }
 main {
-    opacity: 0;
-    transform: translateY(32px);
-    transition:
-        opacity 1.2s cubic-bezier(.23,1.35,.38,1),
-        transform 1.2s cubic-bezier(.23,1.35,.38,1);
-}
-main.loaded {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    transition: none;
 }
 @media (min-width: 769px) {
     .calculator {
@@ -264,4 +242,17 @@ textarea:disabled {
 #b3ProfitCalculator .switch-btn:hover {
     border: 2px solid var(--white3);
     outline: none;
-    box-shadow: 0 0 4px 1px var(--white3
+    box-shadow: 0 0 4px 1px var(--white3);
+}
+#b3ProfitCalculator .switch-btn:disabled,
+#b3ProfitCalculator .switch-btn.active:disabled,
+#b3ProfitCalculator .switch-btn:focus:disabled,
+#b3ProfitCalculator .switch-btn:active:disabled,
+#b3ProfitCalculator .switch-btn:hover:disabled {
+    border: 2px solid #777 !important;
+    color: #aaa !important;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+    outline: none;
+}

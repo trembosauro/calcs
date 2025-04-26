@@ -7,6 +7,7 @@
     --white3:    rgba(255,255,255,0.56);
 }
 
+/* Body settings: background, color, layout */
 body {
     font-family: Arial, sans-serif;
     background-color: var(--primary-bg);
@@ -19,6 +20,7 @@ body {
     font-size: 16px;
 }
 
+/* Button container for calculator tabs */
 .button-container {
     display: flex;
     justify-content: center;
@@ -27,6 +29,7 @@ body {
     margin-top: 24px;
 }
 
+/* Style for calculator tab buttons */
 .toggle-button {
     padding: 15px 30px;
     border: 2px solid var(--white2);
@@ -37,6 +40,8 @@ body {
     margin: 5px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
 }
+
+/* Active tab: Only thicker border and subtle shadow, no background or text color change */
 .toggle-button.active,
 .toggle-button:active {
     background-color: transparent;
@@ -44,26 +49,47 @@ body {
     border: 2px solid var(--white3);
     box-shadow: 0 0 4px 1px var(--white3);
 }
+
 .toggle-button:focus, .toggle-button:hover {
     border: 2px solid var(--white3);
     outline: 2px solid var(--white3);
     border-radius: 16px;
 }
 
+/* Calculators container for stacking forms */
 .calculators {
     position: relative;
-    min-height: 420px;
+    min-height: 420px; /* Adjust for largest calculator form */
     width: 100%;
 }
+
+/* All calculators stacked & only active is visible */
 .calculator {
     opacity: 0;
     pointer-events: none;
+    transform: translateY(32px);
+    /* Slower transition as requested */
+    transition: opacity 0.8s cubic-bezier(.23,1.35,.38,1),
+                transform 0.8s cubic-bezier(.23,1.35,.38,1);
     position: absolute;
     width: 100%;
     left: 0;
     top: 0;
     z-index: 0;
-    display: block;
+    display: block; /* Never use display: none here */
+}
+
+/* Only the active calculator is shown */
+.calculator.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    z-index: 1;
+    position: relative;
+}
+
+/* Calculator card layout */
+.calculator {
     max-width: 600px;
     margin: 8px auto;
     background-color: var(--card-bg);
@@ -72,23 +98,9 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.35);
     font-size: 16px;
     box-sizing: border-box;
-    transition: opacity 0.4s, z-index 0s 0.4s;
 }
-.calculator.show {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 1;
-    position: relative;
-    transition: opacity 0.4s;
-}
-.calculator:not(.show) {
-    opacity: 0 !important;
-    pointer-events: none !important;
-    z-index: 0 !important;
-    position: absolute !important;
-}
-/* Fim da visibilidade controlada */
 
+/* General input, label and select styling */
 .calculator input,
 .calculator button,
 .calculator .result,
@@ -97,23 +109,27 @@ body {
     font-size: 16px;
     color: var(--white);
 }
+
 .calculator input,
 .calculator select {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border-radius: 16px;
-    border: 2px solid var(--input-bg);
+    border: 2px solid var(--input-bg); /* Borda com mesma largura para todos os estados */
     background-color: var(--input-bg);
     box-sizing: border-box;
     color: var(--white);
 }
+
 .calculator input:focus,
 .calculator select:focus {
     border: 2px solid var(--white2);
     outline: none;
     border-radius: 16px;
 }
+
+/* Botão calcular com mesmo efeito dos botões do topo */
 .calculator button {
     padding: 15px 30px;
     border: 2px solid var(--white2);
@@ -138,6 +154,8 @@ body {
     border: 3px solid var(--white3);
     box-shadow: 0 0 4px 1px var(--white3);
 }
+
+/* Result box: styled according to site palette, border removed */
 .result {
     margin-top: 20px;
     font-size: 22px;
@@ -149,6 +167,8 @@ body {
     text-align: left;
     transition: background 0.2s;
 }
+
+/* Checkbox style (e.g., for deduct tax) */
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -157,12 +177,15 @@ body {
     margin-bottom: 10px;
     border-radius: 16px;
 }
+
 .checkbox-container input[type="checkbox"] {
     width: 18px;
     height: 18px;
     margin-left: 8px;
     border-radius: 16px;
 }
+
+/* Calculator headings */
 h2 {
     font-size: 26px;
     font-weight: bold;
@@ -170,24 +193,40 @@ h2 {
     margin-bottom: 14px;
     margin-top: 0;
 }
+
+/* Page fade/slide-in transition, now slower */
 main {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+        opacity 1.2s cubic-bezier(.23,1.35,.38,1),
+        transform 1.2s cubic-bezier(.23,1.35,.38,1);
 }
+
+main.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive width on larger screens */
 @media (min-width: 769px) {
     .calculator {
         width: 500px;
     }
 }
+
+/* Remove default spinner from number inputs in different browsers */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 input[type="number"] {
     -moz-appearance: textfield;
 }
+
+/* Disabled input styling: transparent border with same width */
 input:disabled, 
 select:disabled, 
 textarea:disabled {
@@ -195,82 +234,4 @@ textarea:disabled {
     background-color: #444 !important;
     color: #999 !important;
     border-radius: 16px !important;
-}
-#b3ProfitCalculator .type-btn-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 8px 0 16px 0;
-    flex-wrap: nowrap;
-}
-#b3ProfitCalculator .type-btn-group span {
-    font-size: 15px;
-    font-weight: 500;
-    white-space: nowrap;
-    margin: 0;
-}
-#b3ProfitCalculator .type-btn {
-    padding: 7px 18px;
-    font-size: 14px;
-    min-width: 82px;
-    border-radius: 12px;
-    border: 2px solid var(--white2);
-    background: transparent;
-    line-height: 1.1em;
-    height: 36px;
-    white-space: nowrap;
-    width: auto;
-    display: inline-block;
-    color: var(--white);
-    transition: border 0.2s, box-shadow 0.2s;
-}
-#b3ProfitCalculator .type-btn.active,
-#b3ProfitCalculator .type-btn:active,
-#b3ProfitCalculator .type-btn:focus,
-#b3ProfitCalculator .type-btn:hover {
-    border: 2px solid var(--white3);
-    outline: none;
-    box-shadow: 0 0 4px 1px var(--white3);
-}
-#b3ProfitCalculator .switch-container {
-    margin: 4px 0 12px 0;
-    display: flex;
-    align-items: center;
-}
-#b3ProfitCalculator .switch-btn {
-    padding: 7px 18px;
-    font-size: 14px;
-    min-width: 82px;
-    border-radius: 12px;
-    border: 2px solid var(--white2);
-    background: transparent;
-    line-height: 1.1em;
-    height: 36px;
-    white-space: nowrap;
-    width: auto;
-    display: inline-block;
-    color: var(--white);
-    transition: border 0.2s, box-shadow 0.2s, color 0.2s;
-    box-shadow: none;
-    cursor: pointer;
-}
-#b3ProfitCalculator .switch-btn.active,
-#b3ProfitCalculator .switch-btn:active,
-#b3ProfitCalculator .switch-btn:focus,
-#b3ProfitCalculator .switch-btn:hover {
-    border: 2px solid var(--white3);
-    outline: none;
-    box-shadow: 0 0 4px 1px var(--white3);
-}
-#b3ProfitCalculator .switch-btn:disabled,
-#b3ProfitCalculator .switch-btn.active:disabled,
-#b3ProfitCalculator .switch-btn:focus:disabled,
-#b3ProfitCalculator .switch-btn:active:disabled,
-#b3ProfitCalculator .switch-btn:hover:disabled {
-    border: 2px solid #777 !important;
-    color: #aaa !important;
-    box-shadow: none !important;
-    cursor: not-allowed !important;
-    opacity: 0.6;
-    outline: none;
 }

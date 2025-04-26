@@ -6,7 +6,6 @@
     --white2:    rgba(255,255,255,0.42);
     --white3:    rgba(255,255,255,0.56);
 }
-
 body {
     font-family: Arial, sans-serif;
     background-color: var(--primary-bg);
@@ -18,7 +17,6 @@ body {
     padding: 0 16px;
     font-size: 16px;
 }
-
 .button-container {
     display: flex;
     justify-content: center;
@@ -26,7 +24,6 @@ body {
     margin-bottom: 20px;
     margin-top: 24px;
 }
-
 .toggle-button {
     padding: 15px 30px;
     border: 2px solid var(--white2);
@@ -49,17 +46,20 @@ body {
     outline: 2px solid var(--white3);
     border-radius: 16px;
 }
-
 .calculators {
     position: relative;
     min-height: 420px;
     width: 100%;
 }
 .calculator {
-    opacity: 1;
-    pointer-events: auto;
-    position: relative;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
     width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
     max-width: 600px;
     margin: 8px auto;
     background-color: var(--card-bg);
@@ -68,6 +68,15 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.35);
     font-size: 16px;
     box-sizing: border-box;
+    transition: opacity 0.4s, z-index 0s 0.4s;
+}
+.calculator.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+    position: relative;
+    transition: opacity 0.4s;
 }
 .calculator input,
 .calculator button,
@@ -176,7 +185,6 @@ textarea:disabled {
     color: #999 !important;
     border-radius: 16px !important;
 }
-
 #b3ProfitCalculator .type-btn-group {
     display: flex;
     align-items: center;
@@ -213,7 +221,6 @@ textarea:disabled {
     outline: none;
     box-shadow: 0 0 4px 1px var(--white3);
 }
-
 #b3ProfitCalculator .switch-container {
     margin: 4px 0 12px 0;
     display: flex;

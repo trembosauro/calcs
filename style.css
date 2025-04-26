@@ -216,26 +216,23 @@ textarea:disabled {
     font-size: 14px;
     min-width: 82px;
     border-radius: 12px;
-    border-width: 1.5px;
+    border: 2px solid var(--white2);
     background: transparent;
     line-height: 1.1em;
     height: 36px;
     white-space: nowrap;
     width: auto;
     display: inline-block;
-    border: 1.5px solid var(--white2);
     color: var(--white);
     transition: border 0.2s, box-shadow 0.2s;
 }
 #b3ProfitCalculator .type-btn.active,
-#b3ProfitCalculator .type-btn:active {
-    border: 2px solid var(--white3);
-    box-shadow: 0 0 4px 1px var(--white3);
-}
+#b3ProfitCalculator .type-btn:active,
 #b3ProfitCalculator .type-btn:focus,
 #b3ProfitCalculator .type-btn:hover {
     border: 2px solid var(--white3);
     outline: none;
+    box-shadow: 0 0 4px 1px var(--white3);
 }
 
 #b3ProfitCalculator .switch-container {
@@ -249,25 +246,23 @@ textarea:disabled {
     font-size: 14px;
     min-width: 82px;
     border-radius: 12px;
-    border-width: 1.5px;
-    border: 1.5px solid var(--white2);
+    border: 2px solid var(--white2);
     background: transparent;
-    color: var(--white);
     line-height: 1.1em;
     height: 36px;
     white-space: nowrap;
     width: auto;
     display: inline-block;
+    color: var(--white);
     transition: border 0.2s, box-shadow 0.2s;
 }
 #b3ProfitCalculator .switch-btn.active,
-#b3ProfitCalculator .switch-btn:active {
-    border: 2px solid var(--white3);
-    box-shadow: 0 0 4px 1px var(--white3);
-}
+#b3ProfitCalculator .switch-btn:active,
 #b3ProfitCalculator .switch-btn:focus,
 #b3ProfitCalculator .switch-btn:hover {
     border: 2px solid var(--white3);
     outline: none;
+    box-shadow: 0 0 4px 1px var(--white3);
 }
+
 

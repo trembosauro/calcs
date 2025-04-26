@@ -7,7 +7,6 @@
     --white3:    rgba(255,255,255,0.56);
 }
 
-/* Body settings: background, color, layout */
 body {
     font-family: Arial, sans-serif;
     background-color: var(--primary-bg);
@@ -20,7 +19,6 @@ body {
     font-size: 16px;
 }
 
-/* Button container for calculator tabs */
 .button-container {
     display: flex;
     justify-content: center;
@@ -29,7 +27,6 @@ body {
     margin-top: 24px;
 }
 
-/* Style for calculator tab buttons */
 .toggle-button {
     padding: 15px 30px;
     border: 2px solid var(--white2);
@@ -40,8 +37,6 @@ body {
     margin: 5px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
 }
-
-/* Active tab: Only thicker border and subtle shadow, no background or text color change */
 .toggle-button.active,
 .toggle-button:active {
     background-color: transparent;
@@ -49,26 +44,20 @@ body {
     border: 2px solid var(--white3);
     box-shadow: 0 0 4px 1px var(--white3);
 }
-
 .toggle-button:focus, .toggle-button:hover {
     border: 2px solid var(--white3);
     outline: 2px solid var(--white3);
     border-radius: 16px;
 }
-
-/* Calculators container for stacking forms */
 .calculators {
     position: relative;
-    min-height: 420px; /* Adjust for largest calculator form */
+    min-height: 420px;
     width: 100%;
 }
-
-/* All calculators stacked & only active is visible */
 .calculator {
     opacity: 0;
     pointer-events: none;
     transform: translateY(32px);
-    /* Slower transition as requested */
     transition: opacity 0.8s cubic-bezier(.23,1.35,.38,1),
                 transform 0.8s cubic-bezier(.23,1.35,.38,1);
     position: absolute;
@@ -76,10 +65,8 @@ body {
     left: 0;
     top: 0;
     z-index: 0;
-    display: block; /* Never use display: none here */
+    display: block;
 }
-
-/* Only the active calculator is shown */
 .calculator.show {
     opacity: 1;
     pointer-events: auto;
@@ -87,8 +74,6 @@ body {
     z-index: 1;
     position: relative;
 }
-
-/* Calculator card layout */
 .calculator {
     max-width: 600px;
     margin: 8px auto;
@@ -99,8 +84,6 @@ body {
     font-size: 16px;
     box-sizing: border-box;
 }
-
-/* General input, label and select styling */
 .calculator input,
 .calculator button,
 .calculator .result,
@@ -109,27 +92,23 @@ body {
     font-size: 16px;
     color: var(--white);
 }
-
 .calculator input,
 .calculator select {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border-radius: 16px;
-    border: 2px solid var(--input-bg); /* Borda com mesma largura para todos os estados */
+    border: 2px solid var(--input-bg);
     background-color: var(--input-bg);
     box-sizing: border-box;
     color: var(--white);
 }
-
 .calculator input:focus,
 .calculator select:focus {
     border: 2px solid var(--white2);
     outline: none;
     border-radius: 16px;
 }
-
-/* Botão calcular com mesmo efeito dos botões do topo */
 .calculator button {
     padding: 15px 30px;
     border: 2px solid var(--white2);
@@ -154,8 +133,6 @@ body {
     border: 3px solid var(--white3);
     box-shadow: 0 0 4px 1px var(--white3);
 }
-
-/* Result box: styled according to site palette, border removed */
 .result {
     margin-top: 20px;
     font-size: 22px;
@@ -167,8 +144,6 @@ body {
     text-align: left;
     transition: background 0.2s;
 }
-
-/* Checkbox style (e.g., for deduct tax) */
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -177,15 +152,12 @@ body {
     margin-bottom: 10px;
     border-radius: 16px;
 }
-
 .checkbox-container input[type="checkbox"] {
     width: 18px;
     height: 18px;
     margin-left: 8px;
     border-radius: 16px;
 }
-
-/* Calculator headings */
 h2 {
     font-size: 26px;
     font-weight: bold;
@@ -193,8 +165,6 @@ h2 {
     margin-bottom: 14px;
     margin-top: 0;
 }
-
-/* Page fade/slide-in transition, now slower */
 main {
     opacity: 0;
     transform: translateY(32px);
@@ -202,31 +172,23 @@ main {
         opacity 1.2s cubic-bezier(.23,1.35,.38,1),
         transform 1.2s cubic-bezier(.23,1.35,.38,1);
 }
-
 main.loaded {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* Responsive width on larger screens */
 @media (min-width: 769px) {
     .calculator {
         width: 500px;
     }
 }
-
-/* Remove default spinner from number inputs in different browsers */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
 input[type="number"] {
     -moz-appearance: textfield;
 }
-
-/* Disabled input styling: transparent border with same width */
 input:disabled, 
 select:disabled, 
 textarea:disabled {
@@ -234,4 +196,48 @@ textarea:disabled {
     background-color: #444 !important;
     color: #999 !important;
     border-radius: 16px !important;
+}
+
+/* --------- CUSTOM TOGGLES --------- */
+.switch-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.switch-btn {
+    background: transparent;
+    border: 2px solid var(--white2);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+.switch-btn.active,
+.switch-btn:active {
+    border: 2.5px solid var(--white3);
+    box-shadow: 0 0 4px 1px var(--white3);
+}
+.type-btn-group {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.type-btn {
+    background: transparent;
+    border: 2px solid var(--white2);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+    font-size: 15px;
+}
+.type-btn.active,
+.type-btn:active {
+    border: 2.5px solid var(--white3);
+    box-shadow: 0 0 4px 1px var(--white3);
 }

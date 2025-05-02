@@ -208,7 +208,7 @@ textarea:disabled {
 }
 .rule-three-block {
     background: rgba(30,30,30,0.7);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 28px 22px 18px 22px;
     margin-bottom: 12px;
     display: flex;

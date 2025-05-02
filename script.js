@@ -1,19 +1,15 @@
 // Utility functions
 function clearResult(selector) {
-    // Clears the result text
     document.getElementById(selector).innerText = "";
 }
 function showError(selector, msg) {
-    // Shows an error message in the result box
     document.getElementById(selector).innerText = "Error: " + msg;
 }
 
 // Tab/button logic for showing calculators
 function showCalculator(calculatorId) {
-    // Hide all calculators and show only the selected one
     document.querySelectorAll('.calculator').forEach(calc => calc.classList.remove('show'));
     document.getElementById(calculatorId).classList.add('show');
-    // Highlight the active button
     document.querySelectorAll('.toggle-button').forEach(btn => {
         if (btn.getAttribute('data-id') === calculatorId) {
             btn.classList.add('active');
@@ -22,7 +18,6 @@ function showCalculator(calculatorId) {
         }
     });
 }
-
 // Attach event listener to calculator tab buttons
 document.querySelectorAll('.toggle-button').forEach(btn => {
     btn.addEventListener('click', e => showCalculator(btn.getAttribute('data-id')));
@@ -98,7 +93,6 @@ document.getElementById('compoundInterestCalculator').addEventListener('submit',
     const rate = Number(document.getElementById('rate').value.replace(',', '.')) / 100;
     const period = Number(document.getElementById('period').value.replace(',', '.'));
     const freq = document.getElementById('compoundFrequency').value;
-
     if (!initialInvestment || !rate || !period) {
         showError('compoundInterestResultText', "Main fields required");
         return;
@@ -120,7 +114,6 @@ document.getElementById('b3ProfitCalculator').addEventListener('submit', e => {
     const points = Number(document.getElementById('points').value.replace(',', '.'));
     const type = document.getElementById('type').value;
     const taxDeducted = document.getElementById('taxDeducted').checked;
-
     // Contract values map
     let contractValues = { miniIndice: 0.2, indice: 1, miniDolar: 10, dolar: 50 };
     let contractValue = contractValues[type];
@@ -143,10 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.querySelector('main').classList.add('loaded');
     }, 60);
-
     // Show the first calculator by default when page loads
     showCalculator('calculator');
-
     // Clear results when any input/select is changed
     document.querySelectorAll('.calculator input, .calculator select').forEach(input => {
         input.addEventListener('input', e => {
@@ -155,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (form.id === 'ruleOfThreeCalculator') form.querySelector('#result').value = '';
         });
     });
-
     // Pressing Enter in any input triggers the form submit
     document.querySelectorAll('.calculator input').forEach(input => {
         input.addEventListener('keypress', e => {

@@ -206,3 +206,66 @@ textarea:disabled {
     color: #999 !important;
     border-radius: 16px !important;
 }
+.rule-three-block {
+    background: rgba(30,30,30,0.7);
+    border-radius: 12px;
+    padding: 28px 22px 18px 22px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--white2);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.rule-three-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.rule-three-row input {
+    width: 80px;
+    text-align: center;
+    font-size: 1.1em;
+    padding: 9px;
+    border-radius: 8px;
+    border: 2px solid var(--input-bg);
+    background: #222;
+    color: var(--white);
+    transition: border 0.17s;
+}
+
+.rule-three-row input:focus {
+    border: 2px solid var(--white3);
+    outline: none;
+}
+
+.rule-three-label {
+    font-weight: bold;
+    color: var(--white3);
+    font-size: 1em;
+    margin: 0 7px;
+    letter-spacing: 1px;
+}
+
+.rule-three-equal {
+    text-align: center;
+    width: 100%;
+    font-size: 1.05em;
+    color: var(--white2);
+    letter-spacing: 1px;
+    margin: 5px 0 10px 0;
+}
+
+#inputX {
+    background: #378 !important;
+    color: #fff;
+    font-size: 1.15em !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+    border: 2px solid #378 !important;
+}
+

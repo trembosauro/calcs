@@ -31,26 +31,23 @@
 
         <!-- Rule of Three -->
         <form class="calculator" id="ruleOfThreeCalculator" autocomplete="off">
-            <h2>Rule of Three Calculator</h2>
-            <div class="form-group">
-                <label for="input1">Value 1</label>
-                <input type="number" id="input1" step="any" name="input1" placeholder="100">
-            </div>
-            <div class="form-group">
-                <label for="input2">Value 2</label>
-                <input type="number" id="input2" step="any" name="input2" placeholder="X">
-            </div>
-            <div class="form-group">
-                <label for="input3">Reference (Fixed: 100)</label>
-                <input type="number" id="input3" value="100" disabled>
-            </div>
-            <div class="form-group">
-                <label for="result">Result</label>
-                <input type="number" id="result" disabled placeholder="X">
-            </div>
-            <button type="submit">Calculate</button>
-            <div class="result" id="ruleOfThreeResultText"></div>
-        </form>
+    <h2>Rule of Three Calculator</h2>
+    <div class="rule-three-block">
+        <div class="rule-three-row">
+            <input type="number" id="inputA" step="any" placeholder="A">
+            <span class="rule-three-label">IS TO</span>
+            <input type="number" id="inputB" step="any" placeholder="B">
+        </div>
+        <div class="rule-three-equal">AS</div>
+        <div class="rule-three-row">
+            <input type="number" id="inputC" step="any" placeholder="C">
+            <span class="rule-three-label">IS TO</span>
+            <input type="text" id="inputX" placeholder="X" disabled style="font-weight:bold; font-size:1.2em;">
+        </div>
+    </div>
+    <button type="submit" style="margin-top:30px;">Calculate</button>
+    <div class="result" id="ruleOfThreeResultText"></div>
+</form>
 
         <!-- Leverage Calculator -->
         <form class="calculator" id="leverageCalculator" autocomplete="off">

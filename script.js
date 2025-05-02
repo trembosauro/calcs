@@ -45,17 +45,19 @@ document.getElementById('calculator').addEventListener('submit', e => {
 document.getElementById('ruleOfThreeCalculator').addEventListener('submit', e => {
     e.preventDefault();
     clearResult('ruleOfThreeResultText');
-    const input1 = Number(document.getElementById('input1').value.replace(',', '.'));
-    const input2 = Number(document.getElementById('input2').value.replace(',', '.'));
-    if (!input1 || !input2) {
-        showError('ruleOfThreeResultText', "All fields required");
-        document.getElementById('result').value = '';
+    const A = Number(document.getElementById('inputA').value.replace(',', '.'));
+    const B = Number(document.getElementById('inputB').value.replace(',', '.'));
+    const C = Number(document.getElementById('inputC').value.replace(',', '.'));
+    if (!A || !B || !C) {
+        showError('ruleOfThreeResultText', "Fill all fields.");
+        document.getElementById('inputX').value = '';
         return;
     }
-    const result = (input2 * 100) / input1;
-    document.getElementById('result').value = result.toFixed(2).replace('.', ',');
-    document.getElementById('ruleOfThreeResultText').innerText = `Percentage: ${result.toFixed(2).replace('.', ',')}%`;
+    const X = (B * C) / A;
+    document.getElementById('inputX').value = X.toFixed(2).replace('.', ',');
+    document.getElementById('ruleOfThreeResultText').innerText = `X = ${X.toFixed(2).replace('.', ',')}`;
 });
+
 
 // Leverage calculator
 document.getElementById('leverageCalculator').addEventListener('submit', e => {

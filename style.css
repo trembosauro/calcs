@@ -261,11 +261,10 @@ textarea:disabled {
 }
 
 #inputX {
-    background: #378 !important;
-    color: #fff;
+    background: var(--input-bg) !important;
+    color: var(--white) !important;
     font-size: 1.15em !important;
     font-weight: 700 !important;
     letter-spacing: 1px;
-    border: 2px solid #378 !important;
+    border: 2px solid var(--input-bg) !important;
 }
-

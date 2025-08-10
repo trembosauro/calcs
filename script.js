@@ -37,7 +37,7 @@ document.querySelectorAll('.calculator input').forEach(input => {
   });
 });
 
-document.querySelectorAll('.calculator form').forEach(form => {
+document.querySelectorAll('form.calculator').forEach(form => {
   form.addEventListener('submit', e => {
     e.preventDefault();
     clearResult(form);

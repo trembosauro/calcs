@@ -9,18 +9,19 @@
 </head>
 <body>
   <div class="toggle-buttons">
-    <button class="toggle-button active" data-id="calculator">Normal Calculator</button>
-    <button class="toggle-button" data-id="ruleOfThreeCalculator">Rule of Three</button>
-    <button class="toggle-button" data-id="leverageCalculator">Leverage</button>
+    <button class="toggle-button active" data-id="calculator">Basic Calculator</button>
+    <button class="toggle-button" data-id="ruleOfThreeCalculator">Proportion Calculator</button>
+    <button class="toggle-button" data-id="leverageCalculator">Leverage Profit</button>
     <button class="toggle-button" data-id="profitCalculator">Profit Percentage</button>
     <button class="toggle-button" data-id="compoundInterestCalculator">Compound Interest</button>
-    <button class="toggle-button" data-id="b3ProfitCalculator">B3 Profit</button>
+    <button class="toggle-button" data-id="b3ProfitCalculator">B3 Futures Profit</button>
   </div>
 
   <main>
     <section class="calculators">
       <form class="calculator show" id="calculator" autocomplete="off">
-        <h2>Calculator</h2>
+        <h2>Basic Calculator</h2>
+        <p class="description">Perform basic arithmetic operations on any math expression.</p>
         <div class="form-group">
           <label for="operationInput">Math Expression:</label>
           <input
@@ -37,7 +38,8 @@
       </form>
 
       <form class="calculator" id="ruleOfThreeCalculator" autocomplete="off">
-        <h2>Rule of Three Calculator</h2>
+        <h2>Proportion Calculator</h2>
+        <p class="description">Find the unknown value in a proportion using the rule of three.</p>
         <div class="rule-three-block">
           <div class="rule-three-row">
             <label for="inputA" class="screen-reader-only">A</label>
@@ -60,7 +62,8 @@
       </form>
 
       <form class="calculator" id="leverageCalculator" autocomplete="off">
-        <h2>Leverage Calculator</h2>
+        <h2>Leverage Profit Calculator</h2>
+        <p class="description">Estimate trading profits from leverage and percentage gain.</p>
         <div class="form-group">
           <label for="leverage">Leverage:</label>
           <input type="number" id="leverage" step="any" inputmode="decimal" name="leverage" required />
@@ -75,6 +78,7 @@
 
       <form class="calculator" id="profitCalculator" autocomplete="off">
         <h2>Profit Percentage Calculator</h2>
+        <p class="description">Calculate the profit percentage of a trade from its lot size and profit.</p>
         <div class="form-group">
           <label for="lotSize">Lot Size ($):</label>
           <input type="number" id="lotSize" step="any" inputmode="decimal" name="lotSize" required />
@@ -89,6 +93,7 @@
 
       <form class="calculator" id="compoundInterestCalculator" autocomplete="off">
         <h2>Compound Interest Calculator</h2>
+        <p class="description">Determine the future value of an investment with compound interest.</p>
         <div class="form-group">
           <label for="initialInvestment">Initial Investment ($):</label>
           <input type="number" id="initialInvestment" step="any" inputmode="decimal" name="initialInvestment" required />
@@ -119,7 +124,8 @@
       </form>
 
       <form class="calculator" id="b3ProfitCalculator" autocomplete="off">
-        <h2>B3 Profit Calculator</h2>
+        <h2>B3 Futures Profit Calculator</h2>
+        <p class="description">Estimate profit from B3 futures contracts and optionally deduct taxes.</p>
         <div class="form-group">
           <label for="contracts">Contracts:</label>
           <input type="number" id="contracts" name="contracts" inputmode="decimal" required />

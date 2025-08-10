@@ -210,6 +210,12 @@ h2 {
   margin-top: 0;
 }
 
+.calculator .description {
+  margin-top: -6px;
+  margin-bottom: 16px;
+  color: var(--white2);
+}
+
 main {
   opacity: 1;
   transform: none;

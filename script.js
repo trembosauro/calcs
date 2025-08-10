@@ -72,7 +72,7 @@ document.querySelectorAll('.calculator form').forEach(form => {
         const percentage = toNumber(form.querySelector('#percentage').value);
         if (leverage === null || percentage === null) return showError(form, "All fields required");
         const leveragedProfit = leverage * percentage;
-        form.querySelector('.result').innerText = `Leverage Profit: ${leveragedProfit.toFixed(2)}%`;
+        form.querySelector('.result').innerText = `Leveraged Profit: ${leveragedProfit.toFixed(2)}%`;
         break;
       }
       case 'profitCalculator': {

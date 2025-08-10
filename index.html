@@ -94,22 +94,24 @@
           <input type="number" id="initialInvestment" step="any" inputmode="decimal" name="initialInvestment" required />
         </div>
         <div class="form-group">
-          <label for="contribution">Daily/Monthly Contribution ($):</label>
+          <label for="contribution">Contribution per Period ($):</label>
           <input type="number" id="contribution" step="any" inputmode="decimal" name="contribution" />
         </div>
         <div class="form-group">
-          <label for="rate">Daily/Monthly Interest Rate (%):</label>
+          <label for="rate">Annual Interest Rate (%):</label>
           <input type="number" id="rate" step="any" inputmode="decimal" name="rate" required />
         </div>
         <div class="form-group">
-          <label for="period">Investment Period (days/months):</label>
+          <label for="period">Investment Period (years):</label>
           <input type="number" id="period" step="any" inputmode="decimal" name="period" required />
         </div>
         <div class="form-group">
           <label for="compoundFrequency">Compounding Frequency:</label>
           <select id="compoundFrequency" name="compoundFrequency">
             <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
           </select>
         </div>
         <button type="submit">Calculate</button>

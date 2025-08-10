@@ -31,12 +31,12 @@ body {
   font-size: 16px;
 }
 
-.button-container {
+.toggle-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 20px;
-  margin-top: 24px;
+  gap: 10px;
+  margin: 24px 0 20px 0;
 }
 
 .toggle-button {
@@ -46,7 +46,6 @@ body {
   background-color: transparent;
   color: var(--white);
   cursor: pointer;
-  margin: 5px;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
 }
 

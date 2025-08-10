@@ -1,3 +1,4 @@
+codex/add-trim-check-in-tonumber-function
 function toNumber(value) {
   const trimmed = value.trim();
   if (!trimmed) return null;
@@ -5,6 +6,7 @@ function toNumber(value) {
   return isNaN(num) ? null : num;
 }
 
+main
 function clearResult(form) {
   form.querySelectorAll('.result').forEach(r => r.innerText = '');
 }
@@ -44,7 +46,7 @@ document.querySelectorAll('.calculator input').forEach(input => {
   });
 });
 
-document.querySelectorAll('.calculator form').forEach(form => {
+document.querySelectorAll('form.calculator').forEach(form => {
   form.addEventListener('submit', e => {
     e.preventDefault();
     clearResult(form);
@@ -69,7 +71,15 @@ document.querySelectorAll('.calculator form').forEach(form => {
           form.querySelector('#inputX').value = '';
           return showError(form, "Fill all fields.");
         }
+        if (A === 0) {
+          form.querySelector('#inputX').value = '';
+          return showError(form, "A cannot be zero.");
+        }
         const X = (B * C) / A;
+        if (!isFinite(X)) {
+          form.querySelector('#inputX').value = '';
+          return showError(form, "Invalid calculation.");
+        }
         form.querySelector('#inputX').value = X.toFixed(2).replace('.', ',');
         form.querySelector('.result').innerText = `X = ${X.toFixed(2).replace('.', ',')}`;
         break;
@@ -79,7 +89,7 @@ document.querySelectorAll('.calculator form').forEach(form => {
         const percentage = toNumber(form.querySelector('#percentage').value);
         if (leverage === null || percentage === null) return showError(form, "All fields required");
         const leveragedProfit = leverage * percentage;
-        form.querySelector('.result').innerText = `Leverage Profit: ${leveragedProfit.toFixed(2)}%`;
+        form.querySelector('.result').innerText = `Leveraged Profit: ${leveragedProfit.toFixed(2)}%`;
         break;
       }
       case 'profitCalculator': {

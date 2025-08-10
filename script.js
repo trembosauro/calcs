@@ -1,3 +1,12 @@
+codex/add-trim-check-in-tonumber-function
+function toNumber(value) {
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const num = Number(trimmed.replace(',', '.'));
+  return isNaN(num) ? null : num;
+}
+
+main
 function clearResult(form) {
   form.querySelectorAll('.result').forEach(r => r.innerText = '');
 }
@@ -93,7 +102,7 @@ document.querySelectorAll('form.calculator').forEach(form => {
       }
       case 'compoundInterestCalculator': {
         const initialInvestment = toNumber(form.querySelector('#initialInvestment').value);
-        const contribution = toNumber(form.querySelector('#contribution').value) || 0;
+        const contribution = toNumber(form.querySelector('#contribution').value) ?? 0;
         const rate = toNumber(form.querySelector('#rate').value);
         const period = toNumber(form.querySelector('#period').value);
         const freq = form.querySelector('#compoundFrequency').value;

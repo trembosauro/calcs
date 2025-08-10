@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--primary-bg);
   color: var(--white);
   display: flex;
@@ -31,16 +31,21 @@ body {
   font-size: 16px;
 }
 
+button {
+  position: relative;
+  overflow: hidden;
+}
+
 .toggle-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 24px 0 20px 0;
+  gap: 8px;
+  margin: 24px 0 16px 0;
 }
 
 .toggle-button {
-  padding: 15px 30px;
+  padding: 16px 32px;
   border: 2px solid var(--white2);
   border-radius: 16px;
   background-color: transparent;
@@ -85,7 +90,7 @@ body {
   max-width: 600px;
   margin: 8px auto;
   background-color: var(--card-bg);
-  padding: 20px;
+  padding: 24px;
   border-radius: 16px;
   box-shadow: 0 0 10px rgba(0,0,0,0.35);
   font-size: 16px;
@@ -106,11 +111,11 @@ body {
   flex-direction: column;
 }
 
-.calculator label {
-  font-size: 16px;
-  margin-bottom: 6px;
-  font-weight: 500;
-}
+  .calculator label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
 
 .calculator input,
 .calculator button,
@@ -147,18 +152,18 @@ body {
   opacity: 1 !important;
 }
 
-.calculator button {
-  padding: 15px 30px;
-  border: 2px solid var(--white2);
-  border-radius: 16px;
-  background-color: transparent;
-  color: var(--white);
-  cursor: pointer;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 20px;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
-}
+  .calculator button {
+    padding: 16px 32px;
+    border: 2px solid var(--white2);
+    border-radius: 16px;
+    background-color: transparent;
+    color: var(--white);
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 24px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
+  }
 
 .calculator button:focus,
 .calculator button:hover {
@@ -174,26 +179,26 @@ body {
   box-shadow: 0 0 4px 1px var(--white3);
 }
 
-.result {
-  margin-top: 20px;
-  font-size: 22px;
-  font-weight: bold;
-  color: var(--white);
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 18px;
-  text-align: left;
-  transition: background 0.2s;
-}
+  .result {
+    margin-top: 16px;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--white);
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    text-align: left;
+    transition: background 0.2s;
+  }
 
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 16px;
-}
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 16px;
+  }
 
 .checkbox-container input[type="checkbox"] {
   width: 18px;
@@ -247,59 +252,59 @@ textarea:disabled {
   border-radius: 16px !important;
 }
 
-.rule-three-block {
-  background: rgba(30,30,30,0.7);
-  border-radius: 16px;
-  padding: 28px 22px 18px 22px;
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid var(--white2);
-  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-}
+  .rule-three-block {
+    background: rgba(30,30,30,0.7);
+    border-radius: 16px;
+    padding: 32px 24px 16px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--white2);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+  }
 
-.rule-three-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 14px;
-}
+  .rule-three-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
 
-.rule-three-row input {
-  width: 80px;
-  text-align: center;
-  font-size: 1.1em;
-  padding: 9px;
-  border-radius: 8px;
-  border: 2px solid var(--input-bg);
-  background: #222;
-  color: var(--white);
-  transition: border 0.17s;
-}
+  .rule-three-row input {
+    width: 80px;
+    text-align: center;
+    font-size: 1.1em;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid var(--input-bg);
+    background: #222;
+    color: var(--white);
+    transition: border 0.17s;
+  }
 
 .rule-three-row input:focus {
   border: 2px solid var(--white3);
   outline: none;
 }
 
-.rule-three-label {
-  font-weight: bold;
-  color: var(--white3);
-  font-size: 1em;
-  margin: 0 7px;
-  letter-spacing: 1px;
-}
+  .rule-three-label {
+    font-weight: bold;
+    color: var(--white3);
+    font-size: 1em;
+    margin: 0 8px;
+    letter-spacing: 1px;
+  }
 
-.rule-three-equal {
-  text-align: center;
-  width: 100%;
-  font-size: 1.05em;
-  color: var(--white2);
-  letter-spacing: 1px;
-  margin: 5px 0 10px 0;
-}
+  .rule-three-equal {
+    text-align: center;
+    width: 100%;
+    font-size: 1.05em;
+    color: var(--white2);
+    letter-spacing: 1px;
+    margin: 8px 0 16px 0;
+  }
 
 #inputX {
   background: var(--input-bg) !important;
@@ -310,6 +315,23 @@ textarea:disabled {
   border: 2px solid var(--input-bg) !important;
 }
 
-button.rule-three-submit {
-  margin-top: 30px;
+  button.rule-three-submit {
+    margin-top: 32px;
+  }
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(255,255,255,0.4);
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }

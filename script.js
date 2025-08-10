@@ -1,27 +1,24 @@
-export function toNumber(value) {
-  const num = Number(value.replace(',', '.'));
-  return isNaN(num) ? null : num;
-}
-
-export function clearResult(form) {
+function clearResult(form) {
   form.querySelectorAll('.result').forEach(r => r.innerText = '');
 }
 
-export function showError(form, msg) {
+function showError(form, msg) {
   clearResult(form);
-  form.querySelector('.result').innerText = "Error: " + msg;
+  const el = form.querySelector('.result');
+  if (el) el.innerText = "Error: " + msg;
 }
 
-export function showCalculator(calculatorId) {
+function showCalculator(calculatorId) {
   document.querySelectorAll('.calculator').forEach(calc => calc.classList.remove('show'));
-  document.getElementById(calculatorId).classList.add('show');
+  const target = document.getElementById(calculatorId);
+  if (target) target.classList.add('show');
   document.querySelectorAll('.toggle-button').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-id') === calculatorId);
   });
 }
 
-export function calculateExpression(form) {
-  const expr = form.querySelector('#operationInput').value.trim();
+function calculateExpression(form) {
+  const expr = form.querySelector('#operationInput')?.value?.trim() ?? '';
   if (!expr) return showError(form, 'Input required');
   try {
     const result = math.evaluate(expr.replace(',', '.'));
@@ -31,7 +28,7 @@ export function calculateExpression(form) {
   }
 }
 
-export function calculateRuleOfThree(form) {
+function calculateRuleOfThree(form) {
   const A = toNumber(form.querySelector('#inputA').value);
   const B = toNumber(form.querySelector('#inputB').value);
   const C = toNumber(form.querySelector('#inputC').value);
@@ -39,20 +36,28 @@ export function calculateRuleOfThree(form) {
     form.querySelector('#inputX').value = '';
     return showError(form, 'Fill all fields.');
   }
+  if (A === 0) {
+    form.querySelector('#inputX').value = '';
+    return showError(form, 'A cannot be zero.');
+  }
   const X = (B * C) / A;
+  if (!isFinite(X)) {
+    form.querySelector('#inputX').value = '';
+    return showError(form, 'Invalid calculation.');
+  }
   form.querySelector('#inputX').value = X.toFixed(2).replace('.', ',');
   form.querySelector('.result').innerText = `X = ${X.toFixed(2).replace('.', ',')}`;
 }
 
-export function calculateLeverage(form) {
+function calculateLeverage(form) {
   const leverage = toNumber(form.querySelector('#leverage').value);
   const percentage = toNumber(form.querySelector('#percentage').value);
   if (leverage === null || percentage === null) return showError(form, 'All fields required');
   const leveragedProfit = leverage * percentage;
-  form.querySelector('.result').innerText = `Leverage Profit: ${leveragedProfit.toFixed(2)}%`;
+  form.querySelector('.result').innerText = `Leveraged Profit: ${leveragedProfit.toFixed(2)}%`;
 }
 
-export function calculateProfitPercentage(form) {
+function calculateProfitPercentage(form) {
   const lotSize = toNumber(form.querySelector('#lotSize').value);
   const profit = toNumber(form.querySelector('#profit').value);
   if (lotSize === null || profit === null) return showError(form, 'All fields required');
@@ -60,7 +65,7 @@ export function calculateProfitPercentage(form) {
   form.querySelector('.result').innerText = `Profit: ${profitPercent.toFixed(2)}%`;
 }
 
-export function calculateCompoundInterest(form) {
+function calculateCompoundInterest(form) {
   const initialInvestment = toNumber(form.querySelector('#initialInvestment').value);
   const contribution = toNumber(form.querySelector('#contribution').value) || 0;
   const rate = toNumber(form.querySelector('#rate').value);
@@ -76,7 +81,7 @@ export function calculateCompoundInterest(form) {
   form.querySelector('.result').innerText = `Total Value: ${total.toFixed(2)}`;
 }
 
-export function calculateB3Profit(form) {
+function calculateB3Profit(form) {
   const contracts = toNumber(form.querySelector('#contracts').value);
   const points = toNumber(form.querySelector('#points').value);
   const type = form.querySelector('#type').value;
@@ -90,7 +95,7 @@ export function calculateB3Profit(form) {
   form.querySelector('.result').innerText = `Total Profit: ${total.toFixed(2)}`;
 }
 
-export const handlers = {
+const handlers = {
   calculator: calculateExpression,
   ruleOfThreeCalculator: calculateRuleOfThree,
   leverageCalculator: calculateLeverage,
@@ -132,7 +137,8 @@ document.querySelectorAll('form.calculator').forEach(form => {
 
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    document.querySelector('main').classList.add('loaded');
+    const mainEl = document.querySelector('main');
+    if (mainEl) mainEl.classList.add('loaded');
   }, 60);
   showCalculator('calculator');
 });

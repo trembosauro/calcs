@@ -1,9 +1,12 @@
-codex/add-trim-check-in-tonumber-function
 function toNumber(value) {
-  const trimmed = value.trim();
-  if (!trimmed) return null;
-  const num = Number(trimmed.replace(',', '.'));
-  return isNaN(num) ? null : num;
+    if (value == null) return null;
+    const trimmed = String(value).trim();
+    if (!trimmed) return null;
+    const num = Number(trimmed.replace(',', '.'));
+    return Number.isNaN(num) ? null : num;
+}
+
+main
 }
 
 main

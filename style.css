@@ -105,17 +105,17 @@ button {
   position: relative;
 }
 
-.calculator .form-group {
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-  .calculator label {
-    font-size: 16px;
-    margin-bottom: 8px;
-    font-weight: 500;
+  .calculator .form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
   }
+
+    .calculator label {
+      font-size: 16px;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
 
 .calculator input,
 .calculator button,
@@ -126,17 +126,17 @@ button {
   color: var(--white);
 }
 
-.calculator input,
-.calculator select {
-  width: 100%;
-  padding: 10px;
-  margin: 0;
-  border-radius: 16px;
-  border: 2px solid var(--input-bg);
-  background-color: var(--input-bg);
-  box-sizing: border-box;
-  color: var(--white);
-}
+  .calculator input,
+  .calculator select {
+    width: 100%;
+    padding: 14px;
+    margin: 0;
+    border-radius: 16px;
+    border: 2px solid var(--input-bg);
+    background-color: var(--input-bg);
+    box-sizing: border-box;
+    color: var(--white);
+  }
 
 .calculator input:focus,
 .calculator select:focus {
@@ -180,7 +180,7 @@ button {
 }
 
   .result {
-    margin-top: 16px;
+    margin-top: 24px;
     font-size: 22px;
     font-weight: bold;
     color: var(--white);
@@ -252,37 +252,37 @@ textarea:disabled {
   border-radius: 16px !important;
 }
 
-  .rule-three-block {
-    background: rgba(30,30,30,0.7);
-    border-radius: 16px;
-    padding: 32px 24px 16px 24px;
-    margin-bottom: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid var(--white2);
-    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-  }
+    .rule-three-block {
+      background: rgba(30,30,30,0.7);
+      border-radius: 16px;
+      padding: 32px 24px 16px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid var(--white2);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    }
 
-  .rule-three-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
+    .rule-three-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
 
-  .rule-three-row input {
-    width: 80px;
-    text-align: center;
-    font-size: 1.1em;
-    padding: 8px;
-    border-radius: 8px;
-    border: 2px solid var(--input-bg);
-    background: #222;
-    color: var(--white);
-    transition: border 0.17s;
-  }
+    .rule-three-row input {
+      width: 80px;
+      text-align: center;
+      font-size: 1.1em;
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid var(--input-bg);
+      background: #222;
+      color: var(--white);
+      transition: border 0.17s;
+    }
 
 .rule-three-row input:focus {
   border: 2px solid var(--white3);

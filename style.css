@@ -287,6 +287,7 @@ textarea:disabled {
 .rule-three-row input:focus {
   border: 2px solid var(--white3);
   outline: none;
+  border-radius: 8px;
 }
 
   .rule-three-label {

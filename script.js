@@ -67,7 +67,15 @@ document.querySelectorAll('.calculator form').forEach(form => {
           form.querySelector('#inputX').value = '';
           return showError(form, "Fill all fields.");
         }
+        if (A === 0) {
+          form.querySelector('#inputX').value = '';
+          return showError(form, "A cannot be zero.");
+        }
         const X = (B * C) / A;
+        if (!isFinite(X)) {
+          form.querySelector('#inputX').value = '';
+          return showError(form, "Invalid calculation.");
+        }
         form.querySelector('#inputX').value = X.toFixed(2).replace('.', ',');
         form.querySelector('.result').innerText = `X = ${X.toFixed(2).replace('.', ',')}`;
         break;

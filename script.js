@@ -125,6 +125,24 @@ const handlers = {
 };
 
 if (typeof document !== 'undefined') {
+  function createRipple(e) {
+    const button = e.currentTarget;
+    const circle = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+    circle.classList.add('ripple-effect');
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`;
+    circle.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`;
+    const ripple = button.getElementsByClassName('ripple-effect')[0];
+    if (ripple) ripple.remove();
+    button.appendChild(circle);
+  }
+
+  document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', createRipple);
+  });
+
   document.querySelectorAll('.toggle-button').forEach(btn => {
     btn.addEventListener('click', () => showCalculator(btn.getAttribute('data-id')));
   });

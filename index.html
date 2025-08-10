@@ -23,7 +23,7 @@
         <h2>Calculator</h2>
         <div class="form-group">
           <label for="operationInput">Math Expression:</label>
-          <input type="text" id="operationInput" name="operationInput" placeholder="Type the operation" aria-label="Math operation" />
+          <input type="text" id="operationInput" name="operationInput" placeholder="Type the operation" aria-label="Math operation"  required />
         </div>
         <button type="submit">Calculate</button>
         <div class="result" id="normalResultText"></div>
@@ -33,13 +33,13 @@
         <h2>Rule of Three Calculator</h2>
         <div class="rule-three-block">
           <div class="rule-three-row">
-            <input type="number" id="inputA" step="any" placeholder="A" />
+            <input type="number" id="inputA" step="any" placeholder="A"  required />
             <span class="rule-three-label">IS TO</span>
-            <input type="number" id="inputB" step="any" placeholder="B" />
+            <input type="number" id="inputB" step="any" placeholder="B"  required />
           </div>
           <div class="rule-three-equal">AS</div>
           <div class="rule-three-row">
-            <input type="number" id="inputC" step="any" placeholder="C" />
+            <input type="number" id="inputC" step="any" placeholder="C"  required />
             <span class="rule-three-label">IS TO</span>
             <input type="text" id="inputX" placeholder="X" disabled style="font-weight:bold; font-size:1.2em;" />
           </div>
@@ -52,11 +52,11 @@
         <h2>Leverage Calculator</h2>
         <div class="form-group">
           <label for="leverage">Leverage:</label>
-          <input type="number" id="leverage" step="any" name="leverage" />
+          <input type="number" id="leverage" step="any" name="leverage"  required />
         </div>
         <div class="form-group">
           <label for="percentage">Percentage Earned (%):</label>
-          <input type="number" id="percentage" step="any" name="percentage" />
+          <input type="number" id="percentage" step="any" name="percentage"  required />
         </div>
         <button type="submit">Calculate</button>
         <div class="result" id="leveragedProfitResultText"></div>
@@ -66,11 +66,11 @@
         <h2>Profit Percentage Calculator</h2>
         <div class="form-group">
           <label for="lotSize">Lot Size ($):</label>
-          <input type="number" id="lotSize" step="any" name="lotSize" />
+          <input type="number" id="lotSize" step="any" name="lotSize"  required />
         </div>
         <div class="form-group">
           <label for="profit">Profit Amount ($):</label>
-          <input type="number" id="profit" step="any" name="profit" />
+          <input type="number" id="profit" step="any" name="profit"  required />
         </div>
         <button type="submit">Calculate</button>
         <div class="result" id="profitResultText"></div>
@@ -80,7 +80,7 @@
         <h2>Compound Interest Calculator</h2>
         <div class="form-group">
           <label for="initialInvestment">Initial Investment ($):</label>
-          <input type="number" id="initialInvestment" step="any" name="initialInvestment" />
+          <input type="number" id="initialInvestment" step="any" name="initialInvestment"  required />
         </div>
         <div class="form-group">
           <label for="contribution">Daily/Monthly Contribution ($):</label>
@@ -88,11 +88,11 @@
         </div>
         <div class="form-group">
           <label for="rate">Daily/Monthly Interest Rate (%):</label>
-          <input type="number" id="rate" step="any" name="rate" />
+          <input type="number" id="rate" step="any" name="rate"  required />
         </div>
         <div class="form-group">
           <label for="period">Investment Period (days/months):</label>
-          <input type="number" id="period" step="any" name="period" />
+          <input type="number" id="period" step="any" name="period"  required />
         </div>
         <div class="form-group">
           <label for="compoundFrequency">Compounding Frequency:</label>
@@ -109,7 +109,7 @@
         <h2>B3 Profit Calculator</h2>
         <div class="form-group">
           <label for="contracts">Contracts:</label>
-          <input type="number" id="contracts" name="contracts" />
+          <input type="number" id="contracts" name="contracts"  required />
         </div>
         <div class="form-group">
           <label for="type">Type:</label>
@@ -122,7 +122,7 @@
         </div>
         <div class="form-group">
           <label for="points">Points:</label>
-          <input type="number" id="points" step="0.5" name="points" />
+          <input type="number" id="points" step="0.5" name="points"  required />
         </div>
         <div class="checkbox-container">
           <span>Tax Deducted</span>

@@ -287,8 +287,12 @@ textarea:disabled {
 #inputX {
   background: var(--input-bg) !important;
   color: var(--white) !important;
-  font-size: 1.15em !important;
+  font-size: 1.2em !important;
   font-weight: 700 !important;
   letter-spacing: 1px;
   border: 2px solid var(--input-bg) !important;
+}
+
+button.rule-three-submit {
+  margin-top: 30px;
 }

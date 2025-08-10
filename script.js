@@ -1,8 +1,3 @@
-function toNumber(value) {
-  const num = Number(value.replace(',', '.'));
-  return isNaN(num) ? null : num;
-}
-
 function clearResult(form) {
   form.querySelectorAll('.result').forEach(r => r.innerText = '');
 }

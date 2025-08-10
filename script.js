@@ -1,6 +1,9 @@
 function toNumber(value) {
-  const num = Number(value.replace(',', '.'));
-  return isNaN(num) ? null : num;
+  if (value == null) return null;
+  const trimmed = String(value).trim();
+  if (!trimmed) return null;
+  const num = Number(trimmed.replace(',', '.'));
+  return Number.isNaN(num) ? null : num;
 }
 
 function clearResult(form) {

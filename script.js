@@ -2,9 +2,9 @@ function clearResult(form) {
   form.querySelectorAll('.result').forEach(r => r.innerText = '');
 }
 
-function showError(form, msg) {
+function showError(form, msg, resultEl) {
   clearResult(form);
-  const el = form.querySelector('.result');
+  const el = resultEl || form.querySelector('.result');
   if (el) el.innerText = "Error: " + msg;
 }
 
@@ -18,81 +18,101 @@ function showCalculator(calculatorId) {
 }
 
 function calculateExpression(form) {
+  const resultEl = form.querySelector('.result');
   const expr = form.querySelector('#operationInput')?.value?.trim() ?? '';
-  if (!expr) return showError(form, 'Input required');
+  if (!expr) return showError(form, 'Input required', resultEl);
   try {
     const result = math.evaluate(expr.replace(',', '.'));
-    form.querySelector('.result').innerText = `Result: ${result}`;
+    resultEl.innerText = `Result: ${result}`;
   } catch {
-    showError(form, 'Invalid expression');
+    showError(form, 'Invalid expression', resultEl);
   }
 }
 
 function calculateRuleOfThree(form) {
+  const resultEl = form.querySelector('.result');
+  const inputX = form.querySelector('#inputX');
   const A = toNumber(form.querySelector('#inputA').value);
   const B = toNumber(form.querySelector('#inputB').value);
   const C = toNumber(form.querySelector('#inputC').value);
   if (A === null || B === null || C === null) {
-    form.querySelector('#inputX').value = '';
-    return showError(form, 'Fill all fields.');
+    if (inputX) inputX.value = '';
+    return showError(form, 'Fill all fields.', resultEl);
   }
   if (A === 0) {
-    form.querySelector('#inputX').value = '';
-    return showError(form, 'A cannot be zero.');
+    if (inputX) inputX.value = '';
+    return showError(form, 'A cannot be zero.', resultEl);
   }
   const X = (B * C) / A;
   if (!isFinite(X)) {
-    form.querySelector('#inputX').value = '';
-    return showError(form, 'Invalid calculation.');
+    if (inputX) inputX.value = '';
+    return showError(form, 'Invalid calculation.', resultEl);
   }
-  form.querySelector('#inputX').value = X.toFixed(2).replace('.', ',');
-  form.querySelector('.result').innerText = `X = ${X.toFixed(2).replace('.', ',')}`;
+  if (inputX) inputX.value = X.toFixed(2).replace('.', ',');
+  resultEl.innerText = `X = ${X.toFixed(2).replace('.', ',')}`;
 }
 
 function calculateLeverage(form) {
+  const resultEl = form.querySelector('.result');
   const leverage = toNumber(form.querySelector('#leverage').value);
   const percentage = toNumber(form.querySelector('#percentage').value);
-  if (leverage === null || percentage === null) return showError(form, 'All fields required');
+  if (leverage === null || percentage === null) return showError(form, 'All fields required', resultEl);
   const leveragedProfit = leverage * percentage;
-  form.querySelector('.result').innerText = `Leveraged Profit: ${leveragedProfit.toFixed(2)}%`;
+  resultEl.innerText = `Leveraged Profit: ${leveragedProfit.toFixed(2)}%`;
 }
 
 function calculateProfitPercentage(form) {
+  const resultEl = form.querySelector('.result');
   const lotSize = toNumber(form.querySelector('#lotSize').value);
   const profit = toNumber(form.querySelector('#profit').value);
-  if (lotSize === null || profit === null) return showError(form, 'All fields required');
+  if (lotSize === null || profit === null) return showError(form, 'All fields required', resultEl);
   const profitPercent = (profit / lotSize) * 100;
-  form.querySelector('.result').innerText = `Profit: ${profitPercent.toFixed(2)}%`;
+  resultEl.innerText = `Profit: ${profitPercent.toFixed(2)}%`;
+}
+
+function compoundInterestCalc(initialInvestment, contribution, annualRate, years, freq) {
+  const freqMap = { daily: 365, weekly: 52, monthly: 12, yearly: 1 };
+  const periodsPerYear = freqMap[freq];
+  if (!periodsPerYear) return NaN;
+  const ratePerPeriod = annualRate / 100 / periodsPerYear;
+  const totalPeriods = years * periodsPerYear;
+  let total = initialInvestment;
+  for (let i = 0; i < totalPeriods; i++) {
+    total = (total + contribution) * (1 + ratePerPeriod);
+  }
+  return total;
 }
 
 function calculateCompoundInterest(form) {
+  const resultEl = form.querySelector('.result');
   const initialInvestment = toNumber(form.querySelector('#initialInvestment').value);
   const contribution = toNumber(form.querySelector('#contribution').value) || 0;
   const rate = toNumber(form.querySelector('#rate').value);
-  const period = toNumber(form.querySelector('#period').value);
+  const years = toNumber(form.querySelector('#period').value);
   const freq = form.querySelector('#compoundFrequency').value;
-  if (initialInvestment === null || rate === null || period === null) return showError(form, 'Main fields required');
-  let total = initialInvestment;
-  if (freq === 'daily' || freq === 'monthly') {
-    for (let i = 0; i < period; i++) {
-      total = (total + contribution) * (1 + rate / 100);
-    }
-  }
-  form.querySelector('.result').innerText = `Total Value: ${total.toFixed(2)}`;
+  if (initialInvestment === null || rate === null || years === null) return showError(form, 'Main fields required', resultEl);
+  const total = compoundInterestCalc(initialInvestment, contribution, rate, years, freq);
+  resultEl.innerText = `Total Value: ${total.toFixed(2)}`;
+}
+
+function b3ProfitCalc(contracts, points, type, taxDeducted) {
+  const contractValues = { miniIndice: 0.2, indice: 1, miniDolar: 10, dolar: 50 };
+  let total = contracts * contractValues[type] * points;
+  if (taxDeducted) total *= 0.8;
+  return total;
 }
 
 function calculateB3Profit(form) {
+  const resultEl = form.querySelector('.result');
   const contracts = toNumber(form.querySelector('#contracts').value);
   const points = toNumber(form.querySelector('#points').value);
   const type = form.querySelector('#type').value;
   const taxDeducted = form.querySelector('#taxDeducted').checked;
-  const contractValues = { miniIndice: 0.2, indice: 1, miniDolar: 10, dolar: 50 };
-  if (contracts === null || points === null) return showError(form, 'All fields required');
+  if (contracts === null || points === null) return showError(form, 'All fields required', resultEl);
   if ((type === 'dolar' || type === 'indice') && contracts % 5 !== 0)
-    return showError(form, 'Contracts must be multiples of 5 for Dollar and Index.');
-  let total = contracts * contractValues[type] * points;
-  if (taxDeducted) total *= 0.8;
-  form.querySelector('.result').innerText = `Total Profit: ${total.toFixed(2)}`;
+    return showError(form, 'Contracts must be multiples of 5 for Dollar and Index.', resultEl);
+  const total = b3ProfitCalc(contracts, points, type, taxDeducted);
+  resultEl.innerText = `Total Profit: ${total.toFixed(2)}`;
 }
 
 const handlers = {
@@ -104,41 +124,47 @@ const handlers = {
   b3ProfitCalculator: calculateB3Profit
 };
 
-document.querySelectorAll('.toggle-button').forEach(btn => {
-  btn.addEventListener('click', () => showCalculator(btn.getAttribute('data-id')));
-});
-
-document.querySelectorAll('.calculator input, .calculator select').forEach(input => {
-  input.addEventListener('input', e => {
-    clearResult(e.target.closest('form'));
-    if (e.target.closest('form').id === 'ruleOfThreeCalculator') {
-      e.target.closest('form').querySelector('#inputX').value = '';
-    }
+if (typeof document !== 'undefined') {
+  document.querySelectorAll('.toggle-button').forEach(btn => {
+    btn.addEventListener('click', () => showCalculator(btn.getAttribute('data-id')));
   });
-});
 
-document.querySelectorAll('.calculator input').forEach(input => {
-  input.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
+  document.querySelectorAll('.calculator input, .calculator select').forEach(input => {
+    input.addEventListener('input', e => {
+      clearResult(e.target.closest('form'));
+      if (e.target.closest('form').id === 'ruleOfThreeCalculator') {
+        e.target.closest('form').querySelector('#inputX').value = '';
+      }
+    });
+  });
+
+  document.querySelectorAll('.calculator input').forEach(input => {
+    input.addEventListener('keypress', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        input.closest('form').dispatchEvent(new Event('submit'));
+      }
+    });
+  });
+
+  document.querySelectorAll('form.calculator').forEach(form => {
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      input.closest('form').dispatchEvent(new Event('submit'));
-    }
+      clearResult(form);
+      const handler = handlers[form.id];
+      if (handler) handler(form);
+    });
   });
-});
 
-document.querySelectorAll('form.calculator').forEach(form => {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    clearResult(form);
-    const handler = handlers[form.id];
-    if (handler) handler(form);
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      const mainEl = document.querySelector('main');
+      if (mainEl) mainEl.classList.add('loaded');
+    }, 60);
+    showCalculator('calculator');
   });
-});
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const mainEl = document.querySelector('main');
-    if (mainEl) mainEl.classList.add('loaded');
-  }, 60);
-  showCalculator('calculator');
-});
+if (typeof module !== 'undefined') {
+  module.exports = { compoundInterestCalc, b3ProfitCalc };
+}

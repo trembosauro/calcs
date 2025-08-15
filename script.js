@@ -130,24 +130,6 @@ const handlers = {
 };
 
 if (typeof document !== 'undefined') {
-  function createRipple(e) {
-    const button = e.currentTarget;
-    const circle = document.createElement('span');
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
-    circle.classList.add('ripple-effect');
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`;
-    circle.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`;
-    const ripple = button.getElementsByClassName('ripple-effect')[0];
-    if (ripple) ripple.remove();
-    button.appendChild(circle);
-  }
-
-  document.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', createRipple);
-  });
-
   document.querySelectorAll('.toggle-button').forEach(btn => {
     btn.addEventListener('click', () => showCalculator(btn.getAttribute('data-id')));
   });
@@ -185,6 +167,15 @@ if (typeof document !== 'undefined') {
       if (mainEl) mainEl.classList.add('loaded');
     }, 60);
     showCalculator('calculator');
+    // Apply Material Design ripple effects
+    document.querySelectorAll('.toggle-button').forEach(btn => {
+      btn.classList.add('mdc-button', 'mdc-button--outlined');
+      mdc.ripple.MDCRipple.attachTo(btn);
+    });
+    document.querySelectorAll('form.calculator button[type="submit"]').forEach(btn => {
+      btn.classList.add('mdc-button', 'mdc-button--raised');
+      mdc.ripple.MDCRipple.attachTo(btn);
+    });
   });
 }
 

@@ -9,11 +9,16 @@ function showError(form, msg, resultEl) {
 }
 
 function showCalculator(calculatorId) {
-  document.querySelectorAll('.calculator').forEach(calc => calc.classList.remove('show'));
-  const target = document.getElementById(calculatorId);
-  if (target) target.classList.add('show');
+  document.querySelectorAll('.calculator').forEach(calc => {
+    const isTarget = calc.id === calculatorId;
+    calc.classList.toggle('show', isTarget);
+    calc.setAttribute('aria-hidden', isTarget ? 'false' : 'true');
+    calc.setAttribute('tabindex', isTarget ? '0' : '-1');
+  });
   document.querySelectorAll('.toggle-button').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-id') === calculatorId);
+    const isActive = btn.getAttribute('data-id') === calculatorId;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive);
   });
 }
 

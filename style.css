@@ -5,6 +5,9 @@
   --white: rgba(255,255,255,0.9);
   --white2: rgba(255,255,255,0.42);
   --white3: rgba(255,255,255,0.56);
+  --primary: #6750A4;
+  --primary-hover: #7F67BE;
+  --on-primary: #FFFFFF;
 }
 
 .screen-reader-only {
@@ -56,16 +59,16 @@ button {
 
 .toggle-button.active,
 .toggle-button:active {
-  background-color: transparent;
-  color: var(--white);
-  border: 2px solid var(--white3);
-  box-shadow: 0 0 4px 1px var(--white3);
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 4px 1px var(--primary);
 }
 
 .toggle-button:focus,
 .toggle-button:hover {
-  border: 2px solid var(--white3);
-  outline: 2px solid var(--white3);
+  border: 2px solid var(--primary);
+  outline: 2px solid var(--primary);
   border-radius: 16px;
 }
 
@@ -152,31 +155,28 @@ button {
   opacity: 1 !important;
 }
 
-  .calculator button {
-    padding: 16px 32px;
-    border: 2px solid var(--white2);
-    border-radius: 16px;
-    background-color: transparent;
-    color: var(--white);
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 24px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
-  }
+    .calculator button {
+      padding: 16px 32px;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--primary);
+      color: var(--on-primary);
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 24px;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
 
 .calculator button:focus,
 .calculator button:hover {
-  border: 2px solid var(--white3);
-  outline: 2px solid var(--white3);
-  border-radius: 16px;
+  background-color: var(--primary-hover);
+  outline: 2px solid var(--primary-hover);
 }
 
 .calculator button:active {
-  background-color: transparent;
-  color: var(--white);
-  border: 3px solid var(--white3);
-  box-shadow: 0 0 4px 1px var(--white3);
+  box-shadow: 0 0 4px 1px var(--primary-hover);
 }
 
   .result {

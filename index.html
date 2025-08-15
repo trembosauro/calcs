@@ -11,18 +11,18 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
-  <div class="toggle-buttons">
-    <button class="toggle-button active" data-id="calculator">Basic Calculator</button>
-    <button class="toggle-button" data-id="ruleOfThreeCalculator">Proportion Calculator</button>
-    <button class="toggle-button" data-id="leverageCalculator">Leverage Profit</button>
-    <button class="toggle-button" data-id="profitCalculator">Profit Percentage</button>
-    <button class="toggle-button" data-id="compoundInterestCalculator">Compound Interest</button>
-    <button class="toggle-button" data-id="b3ProfitCalculator">B3 Futures Profit</button>
+  <div class="toggle-buttons" role="tablist">
+    <button class="toggle-button active" data-id="calculator" role="tab" aria-controls="calculator" aria-selected="true">Basic Calculator</button>
+    <button class="toggle-button" data-id="ruleOfThreeCalculator" role="tab" aria-controls="ruleOfThreeCalculator" aria-selected="false">Proportion Calculator</button>
+    <button class="toggle-button" data-id="leverageCalculator" role="tab" aria-controls="leverageCalculator" aria-selected="false">Leverage Profit</button>
+    <button class="toggle-button" data-id="profitCalculator" role="tab" aria-controls="profitCalculator" aria-selected="false">Profit Percentage</button>
+    <button class="toggle-button" data-id="compoundInterestCalculator" role="tab" aria-controls="compoundInterestCalculator" aria-selected="false">Compound Interest</button>
+    <button class="toggle-button" data-id="b3ProfitCalculator" role="tab" aria-controls="b3ProfitCalculator" aria-selected="false">B3 Futures Profit</button>
   </div>
 
   <main>
     <section class="calculators">
-      <form class="calculator show" id="calculator" autocomplete="off">
+      <form class="calculator show" id="calculator" role="tabpanel" tabindex="0" aria-hidden="false" autocomplete="off">
         <h2>Basic Calculator</h2>
         <p class="description">Perform basic arithmetic operations on any math expression.</p>
         <div class="form-group">
@@ -37,10 +37,10 @@
           />
         </div>
         <button type="submit">Calculate</button>
-        <div class="result" id="normalResultText"></div>
+        <div class="result" id="normalResultText" role="status" aria-live="polite"></div>
       </form>
 
-      <form class="calculator" id="ruleOfThreeCalculator" autocomplete="off">
+      <form class="calculator" id="ruleOfThreeCalculator" role="tabpanel" tabindex="-1" aria-hidden="true" autocomplete="off">
         <h2>Proportion Calculator</h2>
         <p class="description">Find the unknown value in a proportion using the rule of three.</p>
         <div class="rule-three-block">
@@ -61,10 +61,10 @@
           </div>
         </div>
         <button type="submit" class="rule-three-submit">Calculate</button>
-        <div class="result" id="ruleOfThreeResultText"></div>
+        <div class="result" id="ruleOfThreeResultText" role="status" aria-live="polite"></div>
       </form>
 
-      <form class="calculator" id="leverageCalculator" autocomplete="off">
+      <form class="calculator" id="leverageCalculator" role="tabpanel" tabindex="-1" aria-hidden="true" autocomplete="off">
         <h2>Leverage Profit Calculator</h2>
         <p class="description">Estimate trading profits from leverage and percentage gain.</p>
         <div class="form-group">
@@ -76,10 +76,10 @@
           <input type="number" id="percentage" step="any" inputmode="decimal" name="percentage" required />
         </div>
         <button type="submit">Calculate</button>
-        <div class="result" id="leveragedProfitResultText"></div>
+        <div class="result" id="leveragedProfitResultText" role="status" aria-live="polite"></div>
       </form>
 
-      <form class="calculator" id="profitCalculator" autocomplete="off">
+      <form class="calculator" id="profitCalculator" role="tabpanel" tabindex="-1" aria-hidden="true" autocomplete="off">
         <h2>Profit Percentage Calculator</h2>
         <p class="description">Calculate the profit percentage of a trade from its lot size and profit.</p>
         <div class="form-group">
@@ -91,10 +91,10 @@
           <input type="number" id="profit" step="any" inputmode="decimal" name="profit" required />
         </div>
         <button type="submit">Calculate</button>
-        <div class="result" id="profitResultText"></div>
+        <div class="result" id="profitResultText" role="status" aria-live="polite"></div>
       </form>
 
-      <form class="calculator" id="compoundInterestCalculator" autocomplete="off">
+      <form class="calculator" id="compoundInterestCalculator" role="tabpanel" tabindex="-1" aria-hidden="true" autocomplete="off">
         <h2>Compound Interest Calculator</h2>
         <p class="description">Determine the future value of an investment with compound interest.</p>
         <div class="form-group">
@@ -123,10 +123,10 @@
           </select>
         </div>
         <button type="submit">Calculate</button>
-        <div class="result" id="compoundInterestResultText"></div>
+        <div class="result" id="compoundInterestResultText" role="status" aria-live="polite"></div>
       </form>
 
-      <form class="calculator" id="b3ProfitCalculator" autocomplete="off">
+      <form class="calculator" id="b3ProfitCalculator" role="tabpanel" tabindex="-1" aria-hidden="true" autocomplete="off">
         <h2>B3 Futures Profit Calculator</h2>
         <p class="description">Estimate profit from B3 futures contracts and optionally deduct taxes.</p>
         <div class="form-group">
@@ -151,7 +151,7 @@
           <input type="checkbox" id="taxDeducted" name="taxDeducted" />
         </label>
         <button type="submit">Calculate</button>
-        <div class="result" id="b3ProfitResultText"></div>
+        <div class="result" id="b3ProfitResultText" role="status" aria-live="polite"></div>
       </form>
     </section>
   </main>

@@ -8,6 +8,8 @@
   --primary: #6750A4;
   --primary-hover: #7F67BE;
   --on-primary: #FFFFFF;
+  --button-bg: #2B2B2B;
+  --button-text: #e0e0e0;
 }
 
 .screen-reader-only {
@@ -44,26 +46,26 @@ body {
 
 .toggle-button {
   padding: 16px 32px;
-  border: 2px solid var(--white);
+  border: 2px solid var(--button-text);
   border-radius: 16px;
   background-color: transparent;
-  color: var(--white);
+  color: var(--button-text);
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
 }
 
 .toggle-button.active,
 .toggle-button:active {
-  background-color: var(--primary);
-  color: var(--on-primary);
-  border: 2px solid var(--primary);
-  box-shadow: 0 0 4px 1px var(--primary);
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 2px solid var(--button-text);
+  box-shadow: none;
 }
 
 .toggle-button:focus,
 .toggle-button:hover {
-  border: 2px solid var(--primary);
-  outline: 2px solid var(--primary);
+  border: 2px solid var(--button-text);
+  outline: 2px solid var(--button-text);
   border-radius: 16px;
 }
 
@@ -152,23 +154,24 @@ body {
 
     .calculator button {
       padding: 16px 32px;
-      border: 2px solid var(--white);
+      border: 2px solid var(--button-bg);
       border-radius: 8px;
-      background-color: transparent;
-      color: var(--white);
+      background-color: var(--button-bg);
+      color: var(--button-text);
       cursor: pointer;
       width: 100%;
       box-sizing: border-box;
       margin-top: 24px;
       box-shadow: none;
-      transition: border-color 0.3s, color 0.3s;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     }
 
 .calculator button:focus,
 .calculator button:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--button-text);
+  color: var(--button-text);
   outline: none;
+  background-color: var(--button-bg);
 }
 
 .calculator button:active {

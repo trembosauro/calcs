@@ -8,7 +8,7 @@
   --primary: #6750A4;
   --primary-hover: #7F67BE;
   --on-primary: #FFFFFF;
-  --button-bg: #2B2B2B;
+  --button-bg: #1A1A1A;
   --button-text: #e0e0e0;
 }
 
@@ -48,8 +48,8 @@ body {
   padding: 16px 32px;
   border: 2px solid var(--button-text);
   border-radius: 16px;
-  background-color: transparent;
-  color: var(--button-text);
+  background-color: var(--button-text);
+  color: var(--primary-bg);
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
 }

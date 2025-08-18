@@ -5,8 +5,8 @@
   --white: rgba(255,255,255,0.9);
   --white2: rgba(255,255,255,0.42);
   --white3: rgba(255,255,255,0.56);
-  --primary: #6750A4;
-  --primary-hover: #7F67BE;
+  --primary: #1A1A1A;
+  --primary-hover: #333333;
   --on-primary: #FFFFFF;
   --button-bg: #1A1A1A;
   --button-text: #e0e0e0;
@@ -46,10 +46,10 @@ body {
 
 .toggle-button {
   padding: 16px 32px;
-  border: 2px solid var(--button-text);
+  border: 2px solid var(--button-bg);
   border-radius: 16px;
-  background-color: var(--button-text);
-  color: var(--primary-bg);
+  background-color: var(--button-bg);
+  color: var(--button-text);
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.35s;
 }

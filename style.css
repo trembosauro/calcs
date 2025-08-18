@@ -1,6 +1,3 @@
-Perfeito. Aqui está o CSS **compactado mas ainda legível**, com seletores agrupados para evitar repetições:
-
-```css
 :root {
   --primary-bg: #1F1F1F;
   --card-bg: #2B2B2B;
@@ -202,6 +199,3 @@ h2 {
 .rule-three-equal { text-align: center; font-size: 1.05em; color: var(--white2); margin: 8px 0 16px; }
 #inputX { background: var(--input-bg)!important; color: var(--white)!important; font-size: 1.2em!important; font-weight: 700!important; letter-spacing: 1px; border: 2px solid var(--input-bg)!important; }
 button.rule-three-submit { margin-top: 32px; }
-```
-
-Quer que eu compacte também os **inputs desabilitados** (`:disabled`) e os estilos de `number` que estavam separados, para enxugar ainda mais?

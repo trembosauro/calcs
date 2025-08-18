@@ -122,7 +122,7 @@ body {
   max-width: 600px;
   margin: 8px auto;
   background: var(--card-bg);
-  padding: 24px;
+  padding: 32px 24px; /* mais espaço no topo */
   border-radius: 16px;
   box-shadow: 0 0 10px rgba(0,0,0,0.35);
   font-size: 16px;
@@ -135,6 +135,10 @@ body {
   transform: translateY(0);
   z-index: 1;
   position: relative;
+}
+
+.calculator .form-group {
+  margin-bottom: 24px;
 }
 
 .calculator input,
@@ -169,7 +173,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin: 8px 0;
+  margin: 8px 0 24px 0; /* mais espaço no final */
 }
 
 h2 {

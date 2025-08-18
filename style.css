@@ -31,8 +31,8 @@ body {
 .checkbox-container input[type="checkbox"] {
   border: none;
   cursor: pointer;
-  background: var(--button-bg);
-  color: var(--button-text);
+  background: var(--button-bg) !important;
+  color: var(--button-text) !important;
   transition: background-color .25s ease;
 }
 
@@ -60,28 +60,34 @@ body {
 .toggle-button:hover,
 .calculator button:hover,
 .checkbox-container input[type="checkbox"]:hover {
-  background: var(--button-hover);
+  background: var(--button-hover) !important;
 }
 
 .toggle-button:active,
 .toggle-button.active,
 .calculator button:active,
 .checkbox-container input[type="checkbox"]:active {
-  background: var(--button-active);
+  background: var(--button-active) !important;
 }
 
 .checkbox-container input[type="checkbox"]:checked {
-  background: var(--button-hover);
+  background: var(--button-hover) !important;
 }
 
 .checkbox-container input[type="checkbox"]:checked::after {
   content: "✔";
-  color: var(--button-text);
+  color: var(--button-text) !important;
   position: absolute;
   top: 0;
   left: 3px;
   font-size: 14px;
   line-height: 20px;
+}
+
+.calculators {
+  position: relative;
+  min-height: 420px;
+  width: 100%;
 }
 
 .calculator {

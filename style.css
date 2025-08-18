@@ -31,7 +31,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 24px 0 32px 0; /* mais espaço abaixo */
+  margin: 24px 0 32px 0;
 }
 
 .toggle-button,
@@ -67,7 +67,6 @@ body {
   background: var(--button-active) !important;
 }
 
-/* Checkbox custom */
 .checkbox-container input[type="checkbox"] {
   appearance: none;
   width: 20px;
@@ -103,12 +102,11 @@ body {
   transform: rotate(45deg);
 }
 
-/* Layout */
 .calculators {
   position: relative;
   min-height: 420px;
   width: 100%;
-  margin-top: 16px; /* espaço adicional */
+  margin-top: 16px;
 }
 
 .calculator {
@@ -122,7 +120,7 @@ body {
   max-width: 600px;
   margin: 8px auto;
   background: var(--card-bg);
-  padding: 32px 24px; /* mais espaço no topo */
+  padding: 32px 24px;
   border-radius: 16px;
   box-shadow: 0 0 10px rgba(0,0,0,0.35);
   font-size: 16px;
@@ -173,7 +171,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin: 8px 0 24px 0; /* mais espaço no final */
+  margin: 8px 0 24px 0;
 }
 
 h2 {
@@ -192,7 +190,6 @@ h2 {
   .calculator { width: 500px; }
 }
 
-/* Regra de três */
 .rule-three-block {
   background: rgba(30,30,30,0.7);
   border-radius: 16px;
@@ -243,3 +240,14 @@ h2 {
 }
 
 button.rule-three-submit { margin-top: 32px; }
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

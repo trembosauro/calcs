@@ -26,9 +26,16 @@ body {
   font-size: 16px;
 }
 
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 32px 0; /* mais espaço abaixo */
+}
+
 .toggle-button,
-.calculator button,
-.checkbox-container input[type="checkbox"] {
+.calculator button {
   border: none;
   cursor: pointer;
   background: var(--button-bg) !important;
@@ -49,45 +56,59 @@ body {
   box-sizing: border-box;
 }
 
-.checkbox-container input[type="checkbox"] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  position: relative;
-}
-
 .toggle-button:hover,
-.calculator button:hover,
-.checkbox-container input[type="checkbox"]:hover {
+.calculator button:hover {
   background: var(--button-hover) !important;
 }
 
 .toggle-button:active,
 .toggle-button.active,
-.calculator button:active,
-.checkbox-container input[type="checkbox"]:active {
+.calculator button:active {
   background: var(--button-active) !important;
 }
 
+/* Checkbox custom */
+.checkbox-container input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: var(--button-bg);
+  cursor: pointer;
+  position: relative;
+  transition: background-color .25s ease;
+}
+
+.checkbox-container input[type="checkbox"]:hover {
+  background: var(--button-hover);
+}
+
+.checkbox-container input[type="checkbox"]:active {
+  background: var(--button-active);
+}
+
 .checkbox-container input[type="checkbox"]:checked {
-  background: var(--button-hover) !important;
+  background: var(--button-hover);
 }
 
 .checkbox-container input[type="checkbox"]:checked::after {
-  content: "✔";
-  color: var(--button-text) !important;
+  content: "";
   position: absolute;
-  top: 0;
-  left: 3px;
-  font-size: 14px;
-  line-height: 20px;
+  top: 4px;
+  left: 6px;
+  width: 6px;
+  height: 12px;
+  border: solid var(--button-text);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
+/* Layout */
 .calculators {
   position: relative;
   min-height: 420px;
   width: 100%;
+  margin-top: 16px; /* espaço adicional */
 }
 
 .calculator {
@@ -158,12 +179,16 @@ h2 {
   margin: 0 0 14px;
 }
 
-.calculator .description { color: var(--white2); margin: -6px 0 16px; }
+.calculator .description {
+  color: var(--white2);
+  margin: -6px 0 16px;
+}
 
 @media (min-width: 769px) {
   .calculator { width: 500px; }
 }
 
+/* Regra de três */
 .rule-three-block {
   background: rgba(30,30,30,0.7);
   border-radius: 16px;
@@ -203,5 +228,14 @@ h2 {
 
 .rule-three-label { font-weight: bold; color: var(--white3); font-size: 1em; margin: 0 8px; }
 .rule-three-equal { text-align: center; font-size: 1.05em; color: var(--white2); margin: 8px 0 16px; }
-#inputX { background: var(--input-bg)!important; color: var(--white)!important; font-size: 1.2em!important; font-weight: 700!important; letter-spacing: 1px; border: 2px solid var(--input-bg)!important; }
+
+#inputX {
+  background: var(--input-bg)!important;
+  color: var(--white)!important;
+  font-size: 1.2em!important;
+  font-weight: 700!important;
+  letter-spacing: 1px;
+  border: 2px solid var(--input-bg)!important;
+}
+
 button.rule-three-submit { margin-top: 32px; }
